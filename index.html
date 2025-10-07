@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIEWSPOT</title>
+    <title>VIEWSPOT - Complete Management System</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
@@ -17,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
     
     <style>
-          /* Custom font for Dhivehi */
+        /* Custom font for Dhivehi */
         @font-face {
             font-family: 'Faruma';
             src: url('fonts/Mv_MAG_Round_XBold.otf');
@@ -28,9 +27,6 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', Arial, sans-serif;
-            
-            
-            
         }
         
         body {
@@ -116,7 +112,7 @@
             min-height: 100vh;
         }
         
-          /* Full screen button */
+        /* Full screen button */
         .fullscreen-btn {
             position: absolute;
             left: 70px;
@@ -158,7 +154,6 @@
             display: block;
         }
         
-        
         /* Sidebar Styles */
         .sidebar {
             width: 250px;
@@ -174,13 +169,11 @@
             padding: 0 20px 20px;
             border-bottom: 1px solid #2d4b32;
             margin-bottom: 20px;
-            
         }
         
         .sidebar-header h2 {
             color: #f8a31c;
             font-size: 22px;
-            
         }
         
         .sidebar-menu {
@@ -198,8 +191,8 @@
             color: #ddd;
             text-decoration: none;
             transition: all 0.3s;
-              font-family: 'Faruma';
-              font-size: larger;
+            font-family: 'Faruma', sans-serif;
+            font-size: larger;
         }
         
         .sidebar-menu a:hover, .sidebar-menu a.active {
@@ -232,7 +225,7 @@
         .header h1 {
             color: #000b72;
             font-size: 24px;
-            font-family: 'Faruma';
+            font-family: 'Faruma', sans-serif;
         }
         
         .logout-btn {
@@ -263,7 +256,6 @@
             padding: 20px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             text-align: center;
-            
         }
         
         .stat-card i {
@@ -280,7 +272,7 @@
         .stat-card p {
             color: #666;
             font-size: 16px;
-            font-family: 'Faruma';
+            font-family: 'Faruma', sans-serif;
         }
         
         .profit {
@@ -356,11 +348,10 @@
             font-size: 14px;
             font-weight: 500;
         }
+        
         .thaana-heading {
-  font-family: "Noto Sans Thaana", "MV Waheed", "Faruma", sans-serif;
-  
-}
-
+            font-family: "Noto Sans Thaana", "MV Waheed", "Faruma", sans-serif;
+        }
         
         .btn:hover {
             background-color: #3a7d48;
@@ -391,7 +382,7 @@
         }
 
         .thaana-text{
-             font-family: 'Faruma';
+            font-family: 'Faruma', sans-serif;
         }
         
         /* Tables */
@@ -606,10 +597,7 @@
         
         .user-info h3 {
             margin-bottom: 5px;
-            
         }
-
-       
         
         .user-info p {
             color: #666;
@@ -671,7 +659,6 @@
         .pos-product-card h3 {
             font-size: 16px;
             margin-bottom: 5px;
-            
         }
         
         .pos-product-card p {
@@ -727,7 +714,7 @@
         .quantity-btn {
             width: 25px;
             height: 25px;
-            borderRadius: 50%;
+            border-radius: 50%;
             border: none;
             background-color: #f8a31c;
             color: white;
@@ -932,7 +919,6 @@
             position: absolute;
             top: 10px;
             right: 10px;
-          
             color: rgb(15, 7, 89);
             border: none;
             padding: 5px 10px;
@@ -1080,14 +1066,13 @@
             right: 0;
             height: 4px;
             background: linear-gradient(90deg, #4a9e5b, #2d4b32);
-            
         }
         
         .financial-card h3 {
             color: #333;
             margin-bottom: 15px;
             font-size: 18px;
-            font-family: 'Faruma';
+            font-family: 'Faruma', sans-serif;
         }
         
         .financial-value {
@@ -1231,6 +1216,199 @@
             gap: 10px;
         }
         
+        /* NEW STYLES FOR POS IMPROVEMENTS */
+        .pos-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .product-search {
+            flex: 1;
+            margin-right: 15px;
+        }
+        
+        .product-search input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .category-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+        
+        .category-tab {
+            padding: 8px 15px;
+            background-color: #f5f5f5;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+        
+        .category-tab.active {
+            background-color: #4a9e5b;
+            color: white;
+        }
+        
+        .quantity-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .quantity-modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+        }
+        
+        .quantity-input {
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        .send-credit-btn {
+            background-color: #17a2b8;
+            margin-top: 10px;
+        }
+        
+        .send-credit-btn:hover {
+            background-color: #138496;
+        }
+        
+        /* NEW: Table Customer Management */
+        .table-customer-management {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        
+        .table-customer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .table-customer-list {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+        
+        .table-customer-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            margin-bottom: 5px;
+            background-color: white;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        
+        .table-customer-name {
+            font-weight: 500;
+        }
+        
+        .table-customer-actions {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .add-customer-btn {
+            width: 100%;
+            padding: 8px;
+            background-color: #4a9e5b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .add-customer-btn:hover {
+            background-color: #3a7d48;
+        }
+        
+        /* NEW: Customer Name Input Modal */
+        .customer-name-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .customer-name-modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+        }
+        
+        .customer-name-input {
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        /* NEW: Customer Selection for Held Orders */
+        .held-order-customer-list {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+        
+        .held-order-customer-item {
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .held-order-customer-item:hover {
+            background-color: #e9e9e9;
+        }
+        
+        .held-order-customer-item.active {
+            background-color: #4a9e5b;
+            color: white;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .sidebar {
@@ -1284,6 +1462,16 @@
             .invoice-totals {
                 width: 100%;
             }
+            
+            .pos-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .product-search {
+                margin-right: 0;
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -1307,9 +1495,7 @@
                 <button class="owner-btn" id="ownerBtn">Owner Options</button>
             </div>
         </div>
-        
     </div>
-     
 
     <!-- Owner Password Modal -->
     <div id="ownerPasswordModal" class="modal">
@@ -1402,7 +1588,6 @@
                         <button type="submit" class="btn">Create User</button>
                     </form>
                 </div>
-               
                 
                 <div id="user-list" class="tab-content">
                     <div class="user-list" id="userListContainer">
@@ -1434,15 +1619,16 @@
                 <li><a href="#" data-tab="settings"><i class="fas fa-cog"></i> ސެޓިން</a></li>
             </ul>
         </div>
-          <!-- Exit Full Screen Button -->
-    <button class="exit-fullscreen-btn" id="exit-fullscreen-btn">
-        <i class="fas fa-compress"></i>
-    </button>
-    
-     <!-- Full screen button moved to left side -->
-            <button class="fullscreen-btn" id="fullscreen-btn">
-                <i class="fas fa-expand"></i>
-            </button>
+        
+        <!-- Exit Full Screen Button -->
+        <button class="exit-fullscreen-btn" id="exit-fullscreen-btn">
+            <i class="fas fa-compress"></i>
+        </button>
+        
+        <!-- Full screen button moved to left side -->
+        <button class="fullscreen-btn" id="fullscreen-btn">
+            <i class="fas fa-expand"></i>
+        </button>
 
         <!-- Main Content -->
         <div class="main-content">
@@ -1456,6 +1642,7 @@
 
             <!-- Dashboard Tab -->
             <div id="dashboard" class="tab-content active">
+                <!-- Dashboard content remains the same -->
                 <div class="stats-grid">
                     <div class="stat-card">
                         <i class="fas fa-shopping-cart"></i>
@@ -1516,7 +1703,6 @@
                             <div class="financial-change negative">
                                 <i class="fas fa-arrow-down"></i>
                                 <span id="expensesChange" class="thaana-text">0% ފައިތުވި މަހުން</span>
-
                             </div>
                             <div class="financial-trend">
                                 <canvas id="expensesTrend"></canvas>
@@ -1567,18 +1753,29 @@
                 </div>
             </div>
 
-            <!-- POS System Tab -->
+            <!-- POS System Tab - IMPROVED -->
             <div id="pos" class="tab-content">
                 <div class="content-section">
+                    <div class="pos-header">
+                        <div class="product-search">
+                            <input type="text" id="productSearch" placeholder="Search products...">
+                        </div>
+                        <div>
+                            <button class="btn btn-secondary" id="refreshProductsBtn">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                        </div>
+                    </div>
                     
+                    <div class="category-tabs" id="categoryTabs">
+                        <!-- Category tabs will be loaded here -->
+                    </div>
                     
                     <div class="pos-container">
                         <div class="pos-products" id="posProducts">
                             <!-- Products will be loaded here -->
                         </div>
                         <div class="pos-cart">
-                            
-                            
                             <!-- Order Type Selection -->
                             <div class="order-type-selection">
                                 <label>Order Type:</label>
@@ -1594,6 +1791,24 @@
                                     <!-- Tables will be loaded here -->
                                 </div>
                             </div>
+                            
+                            <!-- NEW: Table Customer Management -->
+                            <div class="table-customer-management" id="tableCustomerManagement" style="display: none;">
+                                <div class="table-customer-header">
+                                    <h4>Table Customers</h4>
+                                    <button class="btn btn-secondary" id="addCustomerToTableBtn">Add Customer</button>
+                                </div>
+                                <div class="table-customer-list" id="tableCustomerList">
+                                    <!-- Table customers will be loaded here -->
+                                </div>
+                                <div class="customer-selection">
+                                    <label>Select Customer:</label>
+                                    <select id="tableCustomerSelect" class="form-group">
+                                        <option value="">Select Customer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
                             <div class="customer-selection">
                                 <label>Select Customer Type:</label>
                                 <div class="customer-buttons">
@@ -1641,19 +1856,30 @@
                                 <button class="btn btn-danger" id="clearCartBtn">Clear</button>
                                 <button class="btn btn-secondary" id="holdOrderBtn">Hold Order</button>
                                 <button class="btn" id="completeOrderBtn">Complete Order</button>
+                                <button class="btn send-credit-btn" id="sendCreditBtn" style="display: none;">Send Credit</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="content-section">
-                   
+                    <h2>Held Orders</h2>
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="heldOrderCustomerFilter">Customer Name:</label>
+                            <input type="text" id="heldOrderCustomerFilter" placeholder="Filter by customer name">
+                        </div>
+                        <div class="filter-group">
+                            <button class="btn" id="filterHeldOrdersBtn">Filter</button>
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <table id="heldOrdersTable">
                             <thead>
                                 <tr>
                                     <th>Order #</th>
                                     <th>Customer</th>
+                                    <th>Table</th>
                                     <th>Items</th>
                                     <th>Total</th>
                                     <th>Time</th>
@@ -1671,7 +1897,7 @@
             <!-- Orders Tab -->
             <div id="orders" class="tab-content">
                 <div class="content-section">
-                    
+                    <h2>Order Management</h2>
                     <div class="filters">
                         <div class="filter-group">
                             <label for="orderStatusFilter">Status:</label>
@@ -1719,7 +1945,7 @@
                                 <!-- Orders will be loaded here -->
                             </tbody>
                             <tfoot id="ordersTableFooter">
-                                <!-- Subtotal row will be added here -->
+                                <!-- Footer for totals -->
                             </tfoot>
                         </table>
                     </div>
@@ -1729,63 +1955,56 @@
             <!-- Products Tab -->
             <div id="products" class="tab-content">
                 <div class="content-section">
-                    
-                    <div class="tabs">
-                        <div class="tab active" data-subtab="product-list">Product List</div>
-                        <div class="tab" data-subtab="add-product">Add New Product</div>
-                    </div>
-
-                    <div id="product-list" class="tab-content active">
-                        <div class="table-responsive">
-                            <table id="productsTable">
-                                <thead>
-                                    <tr>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                        <th>Category</th>
-                                        <th>Price</th>
-                                        <th>Stock</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Products will be loaded here -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div id="add-product" class="tab-content">
-                        <form id="addProductForm">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="productName">Product Name</label>
-                                    <input type="text" id="productName" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="productCategory">Category</label>
-                                    <select id="productCategory" required>
-                                        <option value="">Select Category</option>
-                                        <!-- Categories will be loaded here -->
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="productPrice">Price (MVR)</label>
-                                    <input type="number" id="productPrice" min="0" step="0.01" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="productStock">Stock Quantity (Optional)</label>
-                                    <input type="number" id="productStock" min="0" placeholder="Leave empty if not applicable">
-                                </div>
+                    <h2>Add New Product</h2>
+                    <form id="addProductForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productName">Product Name</label>
+                                <input type="text" id="productName" required>
                             </div>
                             <div class="form-group">
-                                <label for="productImage">Image URL</label>
-                                <input type="text" id="productImage" required>
+                                <label for="productCategory">Category</label>
+                                <select id="productCategory" required>
+                                    <option value="">Select Category</option>
+                                </select>
                             </div>
-                            <button type="submit" class="btn">Add Product</button>
-                        </form>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productPrice">Price (MVR)</label>
+                                <input type="number" id="productPrice" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="productStock">Stock (Optional)</label>
+                                <input type="number" id="productStock" min="0">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="productImage">Image URL</label>
+                            <input type="text" id="productImage" placeholder="https://example.com/image.jpg">
+                        </div>
+                        <button type="submit" class="btn">Add Product</button>
+                    </form>
+                </div>
+                
+                <div class="content-section">
+                    <h2>Product List</h2>
+                    <div class="table-responsive">
+                        <table id="productsTable">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Products will be loaded here -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -1793,59 +2012,53 @@
             <!-- Categories Tab -->
             <div id="categories" class="tab-content">
                 <div class="content-section">
-                  
-                    <div class="tabs">
-                        <div class="tab active" data-subtab="category-list">Category List</div>
-                        <div class="tab" data-subtab="add-category">Add New Category</div>
-                    </div>
-
-                    <div id="category-list" class="tab-content active">
-                        <div class="table-responsive">
-                            <table id="categoriesTable">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Categories will be loaded here -->
-                                </tbody>
-                            </table>
+                    <h2>Add New Category</h2>
+                    <form id="addCategoryForm">
+                        <div class="form-group">
+                            <label for="categoryName">Category Name</label>
+                            <input type="text" id="categoryName" required>
                         </div>
-                    </div>
-
-                    <div id="add-category" class="tab-content">
-                        <form id="addCategoryForm">
-                            <div class="form-group">
-                                <label for="categoryName">Category Name</label>
-                                <input type="text" id="categoryName" required>
-                            </div>
-                            <button type="submit" class="btn">Add Category</button>
-                        </form>
+                        <button type="submit" class="btn">Add Category</button>
+                    </form>
+                </div>
+                
+                <div class="content-section">
+                    <h2>Category List</h2>
+                    <div class="table-responsive">
+                        <table id="categoriesTable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Categories will be loaded here -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
 
             <!-- Stock Management Tab -->
             <div id="stock" class="tab-content">
-                <div class="content-section">
-                   
-                    <div class="tabs">
-                        <div class="tab active" data-subtab="stock-list">Stock List</div>
-                        <div class="tab" data-subtab="stock-history">Stock History</div>
-                        <div class="tab" data-subtab="stock-adjustment">Stock Adjustment</div>
-                    </div>
-
-                    <div id="stock-list" class="tab-content active">
+                <div class="tabs">
+                    <div class="tab active" data-subtab="stock-overview">Stock Overview</div>
+                    <div class="tab" data-subtab="stock-adjustment">Stock Adjustment</div>
+                    <div class="tab" data-subtab="stock-history">Stock History</div>
+                </div>
+                
+                <div id="stock-overview" class="tab-content active">
+                    <div class="content-section">
+                        <h2>Stock Overview</h2>
                         <div class="filters">
                             <div class="filter-group">
-                                <label for="stockStatusFilter">Stock Status:</label>
+                                <label for="stockStatusFilter">Status:</label>
                                 <select id="stockStatusFilter">
                                     <option value="">All</option>
                                     <option value="low">Low Stock</option>
                                     <option value="out">Out of Stock</option>
-                                    <option value="sufficient">Sufficient Stock</option>
+                                    <option value="sufficient">Sufficient</option>
                                 </select>
                             </div>
                             <div class="filter-group">
@@ -1871,19 +2084,56 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Stock items will be loaded here -->
+                                    <!-- Stock will be loaded here -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
-
-                    <div id="stock-history" class="tab-content">
+                </div>
+                
+                <div id="stock-adjustment" class="tab-content">
+                    <div class="content-section">
+                        <h2>Stock Adjustment</h2>
+                        <form id="stockAdjustmentForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="adjustmentProduct">Product</label>
+                                    <select id="adjustmentProduct" required>
+                                        <option value="">Select Product</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="adjustmentType">Adjustment Type</label>
+                                    <select id="adjustmentType" required>
+                                        <option value="add">Add Stock</option>
+                                        <option value="remove">Remove Stock</option>
+                                        <option value="set">Set Stock</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="adjustmentQuantity">Quantity</label>
+                                    <input type="number" id="adjustmentQuantity" min="1" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="adjustmentNotes">Notes</label>
+                                <textarea id="adjustmentNotes"></textarea>
+                            </div>
+                            <button type="submit" class="btn">Adjust Stock</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div id="stock-history" class="tab-content">
+                    <div class="content-section">
+                        <h2>Stock History</h2>
                         <div class="filters">
                             <div class="filter-group">
                                 <label for="stockHistoryProduct">Product:</label>
                                 <select id="stockHistoryProduct">
                                     <option value="">All Products</option>
-                                    <!-- Products will be loaded here -->
                                 </select>
                             </div>
                             <div class="filter-group">
@@ -1917,129 +2167,90 @@
                             </table>
                         </div>
                     </div>
-
-                    <div id="stock-adjustment" class="tab-content">
-                        <form id="stockAdjustmentForm">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="adjustmentProduct">Product</label>
-                                    <select id="adjustmentProduct" required>
-                                        <option value="">Select Product</option>
-                                        <!-- Products will be loaded here -->
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="adjustmentType">Adjustment Type</label>
-                                    <select id="adjustmentType" required>
-                                        <option value="add">Add Stock</option>
-                                        <option value="remove">Remove Stock</option>
-                                        <option value="set">Set Stock</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="adjustmentQuantity">Quantity</label>
-                                    <input type="number" id="adjustmentQuantity" min="1" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="adjustmentNotes">Notes</label>
-                                    <input type="text" id="adjustmentNotes" placeholder="Reason for adjustment">
-                                </div>
-                            </div>
-                            <button type="submit" class="btn">Apply Adjustment</button>
-                        </form>
-                    </div>
                 </div>
             </div>
 
             <!-- Customer Management Tab -->
             <div id="customers" class="tab-content">
                 <div class="content-section">
-                  
-                    <div class="tabs">
-                        <div class="tab active" data-subtab="customer-list">Customer List</div>
-                        <div class="tab" data-subtab="add-customer">Add New Customer</div>
-                    </div>
-
-                    <div id="customer-list" class="tab-content active">
-                        <div class="filters">
-                            <div class="filter-group">
-                                <label for="customerSearch">Search:</label>
-                                <input type="text" id="customerSearch" placeholder="Search by name or phone">
+                    <h2>Add New Customer</h2>
+                    <form id="addCustomerForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customerName">Customer Name</label>
+                                <input type="text" id="customerName" required>
                             </div>
-                            <div class="filter-group">
-                                <button class="btn" id="filterCustomersBtn">Search</button>
-                            </div>
-                            <div class="filter-group">
-                                <button class="btn btn-secondary" id="exportCustomersExcelBtn">Export Excel</button>
-                            </div>
-                            <div class="filter-group">
-                                <button class="btn btn-secondary" id="exportCustomersPdfBtn">Export PDF</button>
+                            <div class="form-group">
+                                <label for="customerContact">Contact</label>
+                                <input type="text" id="customerContact" required>
                             </div>
                         </div>
-                        <div class="table-responsive">
-                            <table id="customersTable">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Contact</th>
-                                        <th>Job</th>
-                                        <th>Address</th>
-                                        <th>Credit Limit</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Customers will be loaded here -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div id="add-customer" class="tab-content">
-                        <form id="addCustomerForm">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="customerName">Name</label>
-                                    <input type="text" id="customerName" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="customerContact">Contact</label>
-                                    <input type="text" id="customerContact" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="customerJob">Job</label>
-                                    <input type="text" id="customerJob">
-                                </div>
-                                <div class="form-group">
-                                    <label for="customerAddress">Address</label>
-                                    <input type="text" id="customerAddress">
-                                </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="customerJob">Job/Company</label>
+                                <input type="text" id="customerJob">
                             </div>
                             <div class="form-group">
                                 <label for="customerCreditLimit">Credit Limit (MVR)</label>
-                                <input type="number" id="customerCreditLimit" min="0" step="0.01" value="0">
+                                <input type="number" id="customerCreditLimit" step="0.01" min="0" value="0">
                             </div>
-                            <button type="submit" class="btn">Add Customer</button>
-                        </form>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerAddress">Address</label>
+                            <textarea id="customerAddress"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Add Customer</button>
+                    </form>
+                </div>
+                
+                <div class="content-section">
+                    <h2>Customer List</h2>
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="customerSearch">Search:</label>
+                            <input type="text" id="customerSearch" placeholder="Search by name or contact">
+                        </div>
+                        <div class="filter-group">
+                            <button class="btn" id="filterCustomersBtn">Search</button>
+                        </div>
+                        <div class="filter-group">
+                            <button class="btn btn-secondary" id="exportCustomersExcelBtn">Export Excel</button>
+                        </div>
+                        <div class="filter-group">
+                            <button class="btn btn-secondary" id="exportCustomersPdfBtn">Export PDF</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="customersTable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Contact</th>
+                                    <th>Job/Company</th>
+                                    <th>Address</th>
+                                    <th>Credit Limit</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Customers will be loaded here -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
 
-            <!-- Credit Management Tab -->
+            <!-- Credit Management Tab - IMPROVED -->
             <div id="credit" class="tab-content">
-                <div class="content-section">
+                <div class="tabs">
+                    <div class="tab active" data-subtab="credit-accounts">Credit Accounts</div>
+                    <div class="tab" data-subtab="credit-transactions">Credit Transactions</div>
+                    <div class="tab" data-subtab="credit-orders">Credit Orders</div>
+                </div>
                 
-                    <div class="tabs">
-                        <div class="tab active" data-subtab="credit-list">Credit Accounts</div>
-                        <div class="tab" data-subtab="credit-transactions">Credit Transactions</div>
-                        <div class="tab" data-subtab="credit-orders">Credit Orders</div>
-                    </div>
-
-                    <div id="credit-list" class="tab-content active">
+                <div id="credit-accounts" class="tab-content active">
+                    <div class="content-section">
+                        <h2>Credit Accounts</h2>
                         <div class="filters">
                             <div class="filter-group">
                                 <label for="creditStatusFilter">Status:</label>
@@ -2079,14 +2290,16 @@
                             </table>
                         </div>
                     </div>
-
-                    <div id="credit-transactions" class="tab-content">
+                </div>
+                
+                <div id="credit-transactions" class="tab-content">
+                    <div class="content-section">
+                        <h2>Credit Transactions</h2>
                         <div class="filters">
                             <div class="filter-group">
                                 <label for="creditCustomerFilter">Customer:</label>
                                 <select id="creditCustomerFilter">
                                     <option value="">All Customers</option>
-                                    <!-- Customers will be loaded here -->
                                 </select>
                             </div>
                             <div class="filter-group">
@@ -2107,10 +2320,11 @@
                                     <tr>
                                         <th>Date</th>
                                         <th>Customer</th>
+                                        <th>Contact</th>
                                         <th>Type</th>
                                         <th>Amount</th>
                                         <th>Balance</th>
-                                        <th>Reference</th>
+                                        <th>Order #</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -2120,14 +2334,16 @@
                             </table>
                         </div>
                     </div>
-
-                    <div id="credit-orders" class="tab-content">
+                </div>
+                
+                <div id="credit-orders" class="tab-content">
+                    <div class="content-section">
+                        <h2>Credit Orders</h2>
                         <div class="filters">
                             <div class="filter-group">
                                 <label for="creditOrderCustomerFilter">Customer:</label>
                                 <select id="creditOrderCustomerFilter">
                                     <option value="">All Customers</option>
-                                    <!-- Customers will be loaded here -->
                                 </select>
                             </div>
                             <div class="filter-group">
@@ -2148,6 +2364,7 @@
                                     <tr>
                                         <th>Order #</th>
                                         <th>Customer</th>
+                                        <th>Contact</th>
                                         <th>Date</th>
                                         <th>Amount</th>
                                         <th>Status</th>
@@ -2165,20 +2382,53 @@
 
             <!-- Expenses Management Tab -->
             <div id="expenses" class="tab-content">
-                <div class="content-section">
-                  
-                    <div class="tabs">
-                        <div class="tab active" data-subtab="expense-list">Expense List</div>
-                        <div class="tab" data-subtab="add-expense">Add New Expense</div>
+                <div class="tabs">
+                    <div class="tab active" data-subtab="expense-entry">Expense Entry</div>
+                    <div class="tab" data-subtab="expense-list">Expense List</div>
+                </div>
+                
+                <div id="expense-entry" class="tab-content active">
+                    <div class="content-section">
+                        <h2>Add New Expense</h2>
+                        <form id="addExpenseForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expenseDate">Date</label>
+                                    <input type="date" id="expenseDate" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="expenseSupplier">Supplier</label>
+                                    <input type="text" id="expenseSupplier" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expenseInvoice">Invoice #</label>
+                                    <input type="text" id="expenseInvoice">
+                                </div>
+                                <div class="form-group">
+                                    <label for="expenseAmount">Amount (MVR)</label>
+                                    <input type="number" id="expenseAmount" step="0.01" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="expenseNotes">Notes</label>
+                                <textarea id="expenseNotes"></textarea>
+                            </div>
+                            <button type="submit" class="btn">Add Expense</button>
+                        </form>
                     </div>
-
-                    <div id="expense-list" class="tab-content active">
+                </div>
+                
+                <div id="expense-list" class="tab-content">
+                    <div class="content-section">
+                        <h2>Expense List</h2>
                         <div class="filters">
                             <div class="filter-group">
                                 <label for="expenseDateFrom">From:</label>
                                 <input type="date" id="expenseDateFrom">
                             </div>
-                                                      <div class="filter-group">
+                            <div class="filter-group">
                                 <label for="expenseDateTo">To:</label>
                                 <input type="date" id="expenseDateTo">
                             </div>
@@ -2208,110 +2458,46 @@
                                     <!-- Expenses will be loaded here -->
                                 </tbody>
                                 <tfoot id="expensesTableFooter">
-                                    <!-- Subtotal row will be added here -->
+                                    <!-- Footer for totals -->
                                 </tfoot>
                             </table>
                         </div>
-                    </div>
-
-                    <div id="add-expense" class="tab-content">
-                        <form id="addExpenseForm">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="expenseDate">Date</label>
-                                    <input type="date" id="expenseDate" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="expenseSupplier">Supplier</label>
-                                    <input type="text" id="expenseSupplier" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="expenseInvoice">Invoice #</label>
-                                    <input type="text" id="expenseInvoice">
-                                </div>
-                                <div class="form-group">
-                                    <label for="expenseAmount">Amount (MVR)</label>
-                                    <input type="number" id="expenseAmount" min="0" step="0.01" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="expenseNotes">Notes</label>
-                                <textarea id="expenseNotes"></textarea>
-                            </div>
-                            <button type="submit" class="btn">Add Expense</button>
-                        </form>
                     </div>
                 </div>
             </div>
 
             <!-- Documents Tab -->
             <div id="documents" class="tab-content">
-                <div class="content-section">
+                <div class="tabs">
+                    <div class="tab active" data-subtab="quotation">Quotation</div>
+                    <div class="tab" data-subtab="invoice">Invoice</div>
+                    <div class="tab" data-subtab="document-list">Document List</div>
+                </div>
                 
-                    <div class="tabs">
-                        <div class="tab active" data-subtab="create-quotation">Create Quotation</div>
-                        <div class="tab" data-subtab="create-invoice">Create Invoice</div>
-                        <div class="tab" data-subtab="document-list">Document List</div>
-                    </div>
-
-                    <div id="create-quotation" class="tab-content active">
+                <div id="quotation" class="tab-content active">
+                    <div class="content-section">
+                        <h2>Create Quotation</h2>
                         <form id="quotationForm">
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="quotationCustomer">Customer</label>
                                     <select id="quotationCustomer" required>
                                         <option value="">Select Customer</option>
-                                        <!-- Customers will be loaded here -->
                                     </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="quotationDate">Date</label>
-                                    <input type="date" id="quotationDate" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="quotationValidUntil">Valid Until</label>
-                                    <input type="date" id="quotationValidUntil" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="quotationNumber">Quotation #</label>
                                     <input type="text" id="quotationNumber" required>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label>Items</label>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <select id="quotationProduct">
-                                            <option value="">Select Product</option>
-                                            <!-- Products will be loaded here -->
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="number" id="quotationQuantity" min="1" value="1" placeholder="Qty">
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="button" class="btn" id="addQuotationItem">Add Item</button>
-                                    </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="quotationDate">Date</label>
+                                    <input type="date" id="quotationDate" required>
                                 </div>
-                                <div class="table-responsive">
-                                    <table id="quotationItemsTable">
-                                        <thead>
-                                            <tr>
-                                                <th>Product</th>
-                                                <th>Quantity</th>
-                                                <th>Price</th>
-                                                <th>Total</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- Quotation items will be added here -->
-                                        </tbody>
-                                    </table>
+                                <div class="form-group">
+                                    <label for="quotationValidUntil">Valid Until</label>
+                                    <input type="date" id="quotationValidUntil" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -2319,78 +2505,126 @@
                                 <textarea id="quotationNotes"></textarea>
                             </div>
                             
-                            <button type="button" class="btn btn-secondary" id="exportQuotationPdf">Export PDF</button>
+                            <h3>Items</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="quotationProduct">Product</label>
+                                    <select id="quotationProduct">
+                                        <option value="">Select Product</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="quotationQuantity">Quantity</label>
+                                    <input type="number" id="quotationQuantity" min="1" value="1">
+                                </div>
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <button type="button" class="btn btn-secondary" id="addQuotationItem">Add Item</button>
+                                </div>
+                            </div>
+                            
+                            <div class="table-responsive">
+                                <table id="quotationItemsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Description</th>
+                                            <th>Quantity</th>
+                                            <th>Unit Price</th>
+                                            <th>Total</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Quotation items will be added here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="form-group" style="margin-top: 20px;">
+                                <button type="submit" class="btn">Generate Quotation</button>
+                                <button type="button" class="btn btn-secondary" id="exportQuotationPdf">Export PDF</button>
+                            </div>
                         </form>
                     </div>
-
-                    <div id="create-invoice" class="tab-content">
+                </div>
+                
+                <div id="invoice" class="tab-content">
+                    <div class="content-section">
+                        <h2>Create Invoice</h2>
                         <form id="invoiceForm">
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="invoiceCustomer">Customer</label>
                                     <select id="invoiceCustomer" required>
                                         <option value="">Select Customer</option>
-                                        <!-- Customers will be loaded here -->
                                     </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="invoiceDate">Date</label>
-                                    <input type="date" id="invoiceDate" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="invoiceDueDate">Due Date</label>
-                                    <input type="date" id="invoiceDueDate" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="invoiceNumber">Invoice #</label>
                                     <input type="text" id="invoiceNumber" required>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label>Items</label>
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <select id="invoiceProduct">
-                                            <option value="">Select Product</option>
-                                            <!-- Products will be loaded here -->
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="number" id="invoiceQuantity" min="1" value="1" placeholder="Qty">
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="button" class="btn" id="addInvoiceItem">Add Item</button>
-                                    </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="invoiceDate">Date</label>
+                                    <input type="date" id="invoiceDate" required>
                                 </div>
-                                <div class="table-responsive">
-                                    <table id="invoiceItemsTable">
-                                        <thead>
-                                            <tr>
-                                                <th>Product</th>
-                                                <th>Quantity</th>
-                                                <th>Price</th>
-                                                <th>Total</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- Invoice items will be added here -->
-                                        </tbody>
-                                    </table>
+                                <div class="form-group">
+                                    <label for="invoiceDueDate">Due Date</label>
+                                    <input type="date" id="invoiceDueDate" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="invoiceNotes">Notes</label>
                                 <textarea id="invoiceNotes"></textarea>
                             </div>
-                           
-                            <button type="button" class="btn btn-secondary" id="exportInvoicePdf">Export PDF</button>
+                            
+                            <h3>Items</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="invoiceProduct">Product</label>
+                                    <select id="invoiceProduct">
+                                        <option value="">Select Product</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="invoiceQuantity">Quantity</label>
+                                    <input type="number" id="invoiceQuantity" min="1" value="1">
+                                </div>
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <button type="button" class="btn btn-secondary" id="addInvoiceItem">Add Item</button>
+                                </div>
+                            </div>
+                            
+                            <div class="table-responsive">
+                                <table id="invoiceItemsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Description</th>
+                                            <th>Quantity</th>
+                                            <th>Unit Price</th>
+                                            <th>Total</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Invoice items will be added here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="form-group" style="margin-top: 20px;">
+                                <button type="submit" class="btn">Generate Invoice</button>
+                                <button type="button" class="btn btn-secondary" id="exportInvoicePdf">Export PDF</button>
+                            </div>
                         </form>
                     </div>
-
-                    <div id="document-list" class="tab-content">
+                </div>
+                
+                <div id="document-list" class="tab-content">
+                    <div class="content-section">
+                        <h2>Document List</h2>
                         <div class="filters">
                             <div class="filter-group">
                                 <label for="documentTypeFilter">Type:</label>
@@ -2404,7 +2638,7 @@
                                 <label for="documentDateFrom">From:</label>
                                 <input type="date" id="documentDateFrom">
                             </div>
-                                                        <div class="filter-group">
+                            <div class="filter-group">
                                 <label for="documentDateTo">To:</label>
                                 <input type="date" id="documentDateTo">
                             </div>
@@ -2436,23 +2670,25 @@
             <!-- Settings Tab -->
             <div id="settings" class="tab-content">
                 <div class="content-section">
-                    
+                    <h2>Store Settings</h2>
                     <form id="storeSettingsForm">
                         <div class="form-group">
                             <label for="storeName">Store Name</label>
-                            <input type="text" id="storeName" placeholder="Enter store name">
+                            <input type="text" id="storeName" required>
                         </div>
                         <div class="form-group">
                             <label for="storeAddress">Store Address</label>
-                            <textarea id="storeAddress" placeholder="Enter store address"></textarea>
+                            <textarea id="storeAddress"></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="storePhone">Store Phone</label>
-                            <input type="text" id="storePhone" placeholder="Enter store phone number">
-                        </div>
-                        <div class="form-group">
-                            <label for="storeEmail">Store Email</label>
-                            <input type="email" id="storeEmail" placeholder="Enter store email">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="storePhone">Phone</label>
+                                <input type="text" id="storePhone">
+                            </div>
+                            <div class="form-group">
+                                <label for="storeEmail">Email</label>
+                                <input type="email" id="storeEmail">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="tableCount">Number of Tables</label>
@@ -2461,6 +2697,30 @@
                         <button type="submit" class="btn">Save Settings</button>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quantity Input Modal -->
+    <div id="quantityModal" class="quantity-modal" style="display: none;">
+        <div class="quantity-modal-content">
+            <h3 id="quantityProductName">Enter Quantity</h3>
+            <input type="number" id="quantityInput" class="quantity-input" min="1" value="1">
+            <div class="pos-actions">
+                <button class="btn btn-secondary" id="cancelQuantityBtn">Cancel</button>
+                <button class="btn" id="confirmQuantityBtn">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: Customer Name Input Modal -->
+    <div id="customerNameModal" class="customer-name-modal" style="display: none;">
+        <div class="customer-name-modal-content">
+            <h3>Enter Customer Name</h3>
+            <input type="text" id="customerNameInput" class="customer-name-input" placeholder="Customer Name">
+            <div class="pos-actions">
+                <button class="btn btn-secondary" id="cancelCustomerNameBtn">Cancel</button>
+                <button class="btn" id="confirmCustomerNameBtn">Add Customer</button>
             </div>
         </div>
     </div>
@@ -2478,36 +2738,37 @@
                 <!-- Order details will be loaded here -->
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" id="deleteOrderBtn">Delete Order</button>
-                <button class="btn" id="closeOrderModalBtn">Close</button>
+                <button class="btn btn-secondary" id="closeOrderModalBtn">Close</button>
+                <button class="btn btn-danger" id="deleteOrderBtn">Delete Order</button>
             </div>
         </div>
     </div>
 
     <!-- Credit Settlement Modal -->
     <div id="creditSettlementModal" class="modal">
-        <div class="modal-content" style="max-width: 500px;">
+        <div class="modal-content">
             <button class="close-modal" id="closeCreditSettlementModal">
                 <i class="fas fa-times"></i>
             </button>
             <div class="modal-header">
-                <h2>Settle Credit</h2>
+                <h2>Settle Credit Account</h2>
             </div>
-            <div class="modal-body" id="creditSettlementModalBody">
+            <div class="modal-body">
                 <div class="form-group">
-                    <label for="settlementAmount">Amount to Settle (MVR)</label>
-                    <input type="number" id="settlementAmount" min="0" step="0.01" required>
+                    <label for="settlementAmount">Settlement Amount (MVR)</label>
+                    <input type="number" id="settlementAmount" step="0.01" required>
                 </div>
                 <div class="form-group">
                     <label for="settlementMethod">Payment Method</label>
                     <select id="settlementMethod" required>
                         <option value="cash">Cash</option>
                         <option value="bank-transfer">Bank Transfer</option>
+                        <option value="cheque">Cheque</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="settlementNotes">Notes</label>
-                    <input type="text" id="settlementNotes" placeholder="Payment reference or notes">
+                    <textarea id="settlementNotes"></textarea>
                 </div>
             </div>
             <div class="modal-footer">
@@ -2527,18 +2788,18 @@
                 <h2>Order Bill</h2>
             </div>
             <div class="modal-body" id="billModalBody">
-                <!-- Bill will be loaded here -->
+                <!-- Bill content will be loaded here -->
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" id="printBillBtn">Print Bill</button>
-                <button class="btn" id="closeBillModalBtn">Close</button>
+                <button class="btn btn-secondary" id="closeBillModalBtn">Close</button>
+                <button class="btn" id="printBillBtn">Print Bill</button>
             </div>
         </div>
     </div>
 
     <!-- Document Preview Modal -->
     <div id="documentPreviewModal" class="modal">
-        <div class="modal-content" style="max-width: 800px;">
+        <div class="modal-content" style="max-width: 900px;">
             <button class="close-modal" id="closeDocumentPreviewModal">
                 <i class="fas fa-times"></i>
             </button>
@@ -2549,9 +2810,9 @@
                 <!-- Document preview will be loaded here -->
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" id="printDocumentBtn">Print</button>
-                <button class="btn" id="downloadDocumentPdf">Download PDF</button>
-                <button class="btn" id="closeDocumentPreviewBtn">Close</button>
+                <button class="btn btn-secondary" id="closeDocumentPreviewBtn">Close</button>
+                <button class="btn" id="printDocumentBtn">Print</button>
+                <button class="btn btn-secondary" id="downloadDocumentPdf">Download PDF</button>
             </div>
         </div>
     </div>
@@ -2559,45 +2820,40 @@
     <!-- Quick Edit Product Modal -->
     <div id="quickEditProductModal" class="quick-edit-overlay" style="display: none;">
         <div class="quick-edit-modal">
+            <button class="close-modal" id="closeQuickEditModal">
+                <i class="fas fa-times"></i>
+            </button>
             <div class="modal-header">
                 <h2>Edit Product</h2>
-                <button class="close-modal" id="closeQuickEditModal">
-                    <i class="fas fa-times"></i>
-                </button>
             </div>
             <div class="modal-body">
                 <form id="quickEditProductForm">
                     <input type="hidden" id="quickEditProductId">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="quickEditProductName">Product Name</label>
-                            <input type="text" id="quickEditProductName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="quickEditProductCategory">Category</label>
-                            <select id="quickEditProductCategory" required>
-                                <option value="">Select Category</option>
-                                <!-- Categories will be loaded here -->
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        <label for="quickEditProductName">Product Name</label>
+                        <input type="text" id="quickEditProductName" required>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="quickEditProductPrice">Price (MVR)</label>
-                            <input type="number" id="quickEditProductPrice" min="0" step="0.01" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="quickEditProductStock">Stock Quantity</label>
-                            <input type="number" id="quickEditProductStock" min="0" placeholder="Leave empty if not applicable">
-                        </div>
+                    <div class="form-group">
+                        <label for="quickEditProductCategory">Category</label>
+                        <select id="quickEditProductCategory" required>
+                            <option value="">Select Category</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quickEditProductPrice">Price (MVR)</label>
+                        <input type="number" id="quickEditProductPrice" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="quickEditProductStock">Stock</label>
+                        <input type="number" id="quickEditProductStock" min="0">
                     </div>
                     <div class="form-group">
                         <label for="quickEditProductImage">Image URL</label>
-                        <input type="text" id="quickEditProductImage" required>
+                        <input type="text" id="quickEditProductImage">
                     </div>
-                    <div class="form-actions">
-                        <button type="submit" class="btn">Save Changes</button>
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" id="cancelQuickEdit">Cancel</button>
+                        <button type="submit" class="btn">Save Changes</button>
                     </div>
                 </form>
             </div>
@@ -2606,7 +2862,7 @@
 
     <!-- Edit Customer Modal -->
     <div id="editCustomerModal" class="modal">
-        <div class="modal-content" style="max-width: 600px;">
+        <div class="modal-content">
             <button class="close-modal" id="closeEditCustomerModal">
                 <i class="fas fa-times"></i>
             </button>
@@ -2616,33 +2872,29 @@
             <div class="modal-body">
                 <form id="editCustomerForm">
                     <input type="hidden" id="editCustomerId">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="editCustomerName">Name</label>
-                            <input type="text" id="editCustomerName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="editCustomerContact">Contact</label>
-                            <input type="text" id="editCustomerContact" required>
-                        </div>
+                    <div class="form-group">
+                        <label for="editCustomerName">Customer Name</label>
+                        <input type="text" id="editCustomerName" required>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="editCustomerJob">Job</label>
-                            <input type="text" id="editCustomerJob">
-                        </div>
-                        <div class="form-group">
-                            <label for="editCustomerAddress">Address</label>
-                            <input type="text" id="editCustomerAddress">
-                        </div>
+                    <div class="form-group">
+                        <label for="editCustomerContact">Contact</label>
+                        <input type="text" id="editCustomerContact" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCustomerJob">Job/Company</label>
+                        <input type="text" id="editCustomerJob">
+                    </div>
+                    <div class="form-group">
+                        <label for="editCustomerAddress">Address</label>
+                        <textarea id="editCustomerAddress"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="editCustomerCreditLimit">Credit Limit (MVR)</label>
-                        <input type="number" id="editCustomerCreditLimit" min="0" step="0.01" value="0">
+                        <input type="number" id="editCustomerCreditLimit" step="0.01" min="0">
                     </div>
-                    <div class="form-actions">
-                        <button type="submit" class="btn">Save Changes</button>
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" id="cancelEditCustomer">Cancel</button>
+                        <button type="submit" class="btn">Save Changes</button>
                     </div>
                 </form>
             </div>
@@ -2658,17 +2910,17 @@
     </div>
 
     <script>
-     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyButkIKCwwUnwXSm_1SsskPWOaSEtW9hBM",
-  authDomain: "viewspot2025.firebaseapp.com",
-  databaseURL: "https://viewspot2025-default-rtdb.firebaseio.com",
-  projectId: "viewspot2025",
-  storageBucket: "viewspot2025.firebasestorage.app",
-  messagingSenderId: "965324919882",
-  appId: "1:965324919882:web:e0b269f74f5aca34a382b3",
-  measurementId: "G-RV0BJ03PSV"
-};
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyButkIKCwwUnwXSm_1SsskPWOaSEtW9hBM",
+            authDomain: "viewspot2025.firebaseapp.com",
+            databaseURL: "https://viewspot2025-default-rtdb.firebaseio.com",
+            projectId: "viewspot2025",
+            storageBucket: "viewspot2025.firebasestorage.app",
+            messagingSenderId: "965324919882",
+            appId: "1:965324919882:web:e0b269f74f5aca34a382b3",
+            measurementId: "G-RV0BJ03PSV"
+        };
 
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
@@ -2683,7 +2935,7 @@ const firebaseConfig = {
         let cart = [];
         let currentCustomer = null;
         let heldOrders = {};
-        let notifiedOrders = {}; // Track which orders have been notified
+        let notifiedOrders = {};
         let currentTable = null;
         let profitLossChart = null;
         let revenueTrendChart = null;
@@ -2691,7 +2943,11 @@ const firebaseConfig = {
         let profitTrendChart = null;
         let tablesCount = 10;
         let currentDocument = null;
-        let currentOrderType = 'dining'; // 'dining' or 'takeaway'
+        let currentOrderType = 'dining';
+        let selectedProductForQuantity = null;
+        let currentCategoryFilter = 'all';
+        let tableCustomers = {}; // NEW: Store customers for each table
+        let currentTableCustomer = null; // NEW: Currently selected table customer
 
         // DOM elements
         const loginScreen = document.getElementById('loginScreen');
@@ -2726,7 +2982,30 @@ const firebaseConfig = {
         const cancelEditCustomer = document.getElementById('cancelEditCustomer');
         const editCustomerForm = document.getElementById('editCustomerForm');
 
-        // POS elements
+        // NEW POS elements
+        const productSearch = document.getElementById('productSearch');
+        const categoryTabs = document.getElementById('categoryTabs');
+        const refreshProductsBtn = document.getElementById('refreshProductsBtn');
+        const quantityModal = document.getElementById('quantityModal');
+        const quantityProductName = document.getElementById('quantityProductName');
+        const quantityInput = document.getElementById('quantityInput');
+        const cancelQuantityBtn = document.getElementById('cancelQuantityBtn');
+        const confirmQuantityBtn = document.getElementById('confirmQuantityBtn');
+        const sendCreditBtn = document.getElementById('sendCreditBtn');
+
+        // NEW: Customer name modal elements
+        const customerNameModal = document.getElementById('customerNameModal');
+        const customerNameInput = document.getElementById('customerNameInput');
+        const cancelCustomerNameBtn = document.getElementById('cancelCustomerNameBtn');
+        const confirmCustomerNameBtn = document.getElementById('confirmCustomerNameBtn');
+
+        // NEW: Table customer management elements
+        const tableCustomerManagement = document.getElementById('tableCustomerManagement');
+        const tableCustomerList = document.getElementById('tableCustomerList');
+        const addCustomerToTableBtn = document.getElementById('addCustomerToTableBtn');
+        const tableCustomerSelect = document.getElementById('tableCustomerSelect');
+
+        // Existing POS elements
         const tableGrid = document.getElementById('tableGrid');
         const tableSelection = document.getElementById('tableSelection');
         const posProducts = document.getElementById('posProducts');
@@ -2747,6 +3026,10 @@ const firebaseConfig = {
         const printBillBtn = document.getElementById('printBillBtn');
         const closeBillModal = document.getElementById('closeBillModal');
         const closeBillModalBtn = document.getElementById('closeBillModalBtn');
+
+        // NEW: Held orders filter
+        const heldOrderCustomerFilter = document.getElementById('heldOrderCustomerFilter');
+        const filterHeldOrdersBtn = document.getElementById('filterHeldOrdersBtn');
 
         // Credit settlement elements
         const closeCreditSettlementModal = document.getElementById('closeCreditSettlementModal');
@@ -2857,6 +3140,62 @@ const firebaseConfig = {
             closeEditCustomerModal.addEventListener('click', () => editCustomerModal.style.display = 'none');
             cancelEditCustomer.addEventListener('click', () => editCustomerModal.style.display = 'none');
 
+            // NEW: Customer name modal buttons
+            cancelCustomerNameBtn.addEventListener('click', () => {
+                customerNameModal.style.display = 'none';
+            });
+            
+            confirmCustomerNameBtn.addEventListener('click', () => {
+                const customerName = customerNameInput.value.trim();
+                if (customerName) {
+                    addCustomerToTable(currentTable, customerName);
+                    customerNameModal.style.display = 'none';
+                    customerNameInput.value = '';
+                } else {
+                    showNotification('Please enter a customer name', 'error');
+                }
+            });
+
+            // NEW: Quantity modal buttons
+            cancelQuantityBtn.addEventListener('click', () => {
+                quantityModal.style.display = 'none';
+                selectedProductForQuantity = null;
+            });
+            
+            confirmQuantityBtn.addEventListener('click', () => {
+                if (selectedProductForQuantity) {
+                    const quantity = parseInt(quantityInput.value) || 1;
+                    addToCartWithQuantity(selectedProductForQuantity.id, selectedProductForQuantity.product, quantity);
+                    quantityModal.style.display = 'none';
+                    selectedProductForQuantity = null;
+                }
+            });
+
+            // NEW: Product search
+            productSearch.addEventListener('input', filterProducts);
+
+            // NEW: Refresh products button
+            refreshProductsBtn.addEventListener('click', () => {
+                loadProductsForPOS();
+                showNotification('Products refreshed');
+            });
+
+            // NEW: Send credit button
+            sendCreditBtn.addEventListener('click', sendToCreditManagement);
+
+            // NEW: Add customer to table button
+            addCustomerToTableBtn.addEventListener('click', () => {
+                if (currentTable) {
+                    customerNameModal.style.display = 'flex';
+                    customerNameInput.focus();
+                } else {
+                    showNotification('Please select a table first', 'error');
+                }
+            });
+
+            // NEW: Filter held orders by customer name
+            filterHeldOrdersBtn.addEventListener('click', loadHeldOrders);
+
             // Close modals when clicking outside
             window.addEventListener('click', (e) => {
                 if (e.target === orderModal) orderModal.style.display = 'none';
@@ -2867,6 +3206,13 @@ const firebaseConfig = {
                 if (e.target === documentPreviewModal) documentPreviewModal.style.display = 'none';
                 if (e.target === quickEditProductModal) quickEditProductModal.style.display = 'none';
                 if (e.target === editCustomerModal) editCustomerModal.style.display = 'none';
+                if (e.target === quantityModal) {
+                    quantityModal.style.display = 'none';
+                    selectedProductForQuantity = null;
+                }
+                if (e.target === customerNameModal) {
+                    customerNameModal.style.display = 'none';
+                }
             });
 
             // Delete buttons
@@ -2892,7 +3238,7 @@ const firebaseConfig = {
             document.getElementById('exportCustomersExcelBtn').addEventListener('click', () => exportToExcel('customers'));
             document.getElementById('exportCustomersPdfBtn').addEventListener('click', () => exportToPdf('customers'));
             document.getElementById('exportCreditExcelBtn').addEventListener('click', () => exportToExcel('credit'));
-                        document.getElementById('exportCreditPdfBtn').addEventListener('click', () => exportToPdf('credit'));
+            document.getElementById('exportCreditPdfBtn').addEventListener('click', () => exportToPdf('credit'));
             document.getElementById('exportExpensesExcelBtn').addEventListener('click', () => exportToExcel('expenses'));
             document.getElementById('exportExpensesPdfBtn').addEventListener('click', () => exportToPdf('expenses'));
             document.getElementById('exportBalanceExcelBtn').addEventListener('click', () => exportToExcel('balance'));
@@ -2906,8 +3252,8 @@ const firebaseConfig = {
             document.getElementById('stockAdjustmentForm').addEventListener('submit', adjustStock);
             document.getElementById('storeSettingsForm').addEventListener('submit', saveStoreSettings);
             document.getElementById('editCustomerForm').addEventListener('submit', saveCustomerEdit);
-            quotationForm.addEventListener('submit', generateQuotation);
-            invoiceForm.addEventListener('submit', generateInvoice);
+            document.getElementById('quotationForm').addEventListener('submit', generateQuotation);
+            document.getElementById('invoiceForm').addEventListener('submit', generateInvoice);
             quickEditProductForm.addEventListener('submit', saveQuickEditProduct);
 
             // POS buttons
@@ -2922,6 +3268,7 @@ const firebaseConfig = {
                 takeawayBtn.classList.remove('active');
                 currentOrderType = 'dining';
                 tableSelection.style.display = 'block';
+                tableCustomerManagement.style.display = 'block';
             });
 
             takeawayBtn.addEventListener('click', () => {
@@ -2929,7 +3276,9 @@ const firebaseConfig = {
                 diningBtn.classList.remove('active');
                 currentOrderType = 'takeaway';
                 tableSelection.style.display = 'none';
+                tableCustomerManagement.style.display = 'none';
                 currentTable = null;
+                currentTableCustomer = null;
                 
                 // Deselect any selected table
                 document.querySelectorAll('.table-btn').forEach(btn => {
@@ -2945,6 +3294,7 @@ const firebaseConfig = {
                 creditCustomerSection.style.display = 'none';
                 currentCustomerId = 'cash';
                 currentCustomer = {name: document.getElementById('cashCustomerName').value || 'Cash Customer'};
+                sendCreditBtn.style.display = 'none';
             });
 
             creditCustomerBtn.addEventListener('click', () => {
@@ -2954,6 +3304,7 @@ const firebaseConfig = {
                 creditCustomerSection.style.display = 'block';
                 currentCustomerId = null;
                 currentCustomer = null;
+                sendCreditBtn.style.display = 'block';
             });
 
             // Credit settlement
@@ -2984,6 +3335,491 @@ const firebaseConfig = {
                 // Set up real-time listeners
                 setupRealtimeListeners();
             }
+        }
+
+        // NEW: Filter products by search term
+        function filterProducts() {
+            const searchTerm = productSearch.value.toLowerCase();
+            const productCards = document.querySelectorAll('.pos-product-card');
+            
+            productCards.forEach(card => {
+                const productName = card.querySelector('h3').textContent.toLowerCase();
+                if (productName.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // NEW: Load products with category organization
+        function loadProductsForPOS() {
+            if (!userAccess.includes('pos')) return;
+            
+            database.ref('products').once('value').then(snapshot => {
+                const products = snapshot.val();
+                posProducts.innerHTML = '';
+                
+                // Load categories for tabs
+                database.ref('categories').once('value').then(catSnapshot => {
+                    const categories = catSnapshot.val();
+                    categoryTabs.innerHTML = '';
+                    
+                    // Add "All" tab
+                    const allTab = document.createElement('div');
+                    allTab.className = 'category-tab active';
+                    allTab.textContent = 'All';
+                    allTab.dataset.category = 'all';
+                    allTab.addEventListener('click', () => {
+                        document.querySelectorAll('.category-tab').forEach(tab => tab.classList.remove('active'));
+                        allTab.classList.add('active');
+                        currentCategoryFilter = 'all';
+                        filterProductsByCategory();
+                    });
+                    categoryTabs.appendChild(allTab);
+                    
+                    // Add category tabs
+                    if (categories) {
+                        Object.values(categories).forEach(category => {
+                            const categoryTab = document.createElement('div');
+                            categoryTab.className = 'category-tab';
+                            categoryTab.textContent = category;
+                            categoryTab.dataset.category = category;
+                            categoryTab.addEventListener('click', () => {
+                                document.querySelectorAll('.category-tab').forEach(tab => tab.classList.remove('active'));
+                                categoryTab.classList.add('active');
+                                currentCategoryFilter = category;
+                                filterProductsByCategory();
+                            });
+                            categoryTabs.appendChild(categoryTab);
+                        });
+                    }
+                });
+                
+                if (products) {
+                    Object.entries(products).forEach(([id, product]) => {
+                        // Only show products with stock > 0 or no stock tracking
+                        if (product.stock === undefined || product.stock > 0) {
+                            const productCard = document.createElement('div');
+                            productCard.className = 'pos-product-card';
+                            productCard.dataset.category = product.category || 'Uncategorized';
+                            productCard.innerHTML = `
+                                <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+                                <h3>${product.name}</h3>
+                                <p>MVR ${product.price?.toFixed(2) || '0.00'}</p>
+                                ${product.stock !== undefined ? `<small>Stock: ${product.stock}</small>` : ''}
+                            `;
+                            productCard.addEventListener('click', () => {
+                                if (currentOrderType === 'dining' && !currentTable) {
+                                    showNotification('Please select a table first', 'error');
+                                    return;
+                                }
+                                
+                                if (!currentCustomerId && creditCustomerBtn.classList.contains('active')) {
+                                    showNotification('Please select a credit customer first', 'error');
+                                    return;
+                                }
+                                
+                                // Show quantity input modal
+                                showQuantityModal(id, product);
+                            });
+                            posProducts.appendChild(productCard);
+                        }
+                    });
+                }
+            });
+        }
+
+        // NEW: Show quantity input modal
+        function showQuantityModal(productId, product) {
+            selectedProductForQuantity = { id: productId, product: product };
+            quantityProductName.textContent = `Enter quantity for ${product.name}`;
+            quantityInput.value = '1';
+            quantityInput.focus();
+            quantityModal.style.display = 'flex';
+        }
+
+        // NEW: Add to cart with specified quantity
+        function addToCartWithQuantity(productId, product, quantity) {
+            if (currentOrderType === 'dining' && !currentTable) {
+                showNotification('Please select a table first', 'error');
+                return;
+            }
+            
+            if (!currentCustomerId && creditCustomerBtn.classList.contains('active')) {
+                showNotification('Please select a credit customer first', 'error');
+                return;
+            }
+            
+            // Check if product already in cart
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                if (product.stock !== undefined && existingItem.quantity + quantity > product.stock) {
+                    showNotification('Not enough stock available', 'error');
+                    return;
+                }
+                existingItem.quantity += quantity;
+            } else {
+                // Check if product has stock
+                if (product.stock !== undefined && product.stock < quantity) {
+                    showNotification('Not enough stock available', 'error');
+                    return;
+                }
+                
+                cart.push({
+                    id: productId,
+                    name: product.name,
+                    price: product.price,
+                    quantity: quantity
+                });
+            }
+            
+            updateCart();
+            showNotification(`${quantity} x ${product.name} added to cart`);
+        }
+
+        // NEW: Filter products by category
+        function filterProductsByCategory() {
+            const productCards = document.querySelectorAll('.pos-product-card');
+            
+            productCards.forEach(card => {
+                if (currentCategoryFilter === 'all' || card.dataset.category === currentCategoryFilter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // NEW: Send order to credit management
+        function sendToCreditManagement() {
+            if (cart.length === 0) {
+                showNotification('Cart is empty', 'error');
+                return;
+            }
+            
+            if (!currentCustomerId || currentCustomerId === 'cash') {
+                showNotification('Please select a credit customer first', 'error');
+                return;
+            }
+            
+            const orderNumber = generateOrderNumber();
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Check if credit payment exceeds credit limit
+            database.ref('creditAccounts/' + currentCustomerId).once('value').then(snapshot => {
+                const creditAccount = snapshot.val();
+                const currentBalance = creditAccount ? creditAccount.balance || 0 : 0;
+                const creditLimit = currentCustomer.creditLimit || 0;
+                
+                if (currentBalance + total > creditLimit) {
+                    showNotification('Credit limit exceeded. Please choose another payment method.', 'error');
+                    return;
+                }
+                
+                const order = {
+                    orderNumber,
+                    customer: {
+                        id: currentCustomerId,
+                        name: currentCustomer.name,
+                        contact: currentCustomer.contact || ''
+                    },
+                    items: cart,
+                    total,
+                    paymentMethod: 'credit',
+                    orderType: currentOrderType,
+                    status: 'completed',
+                    table: currentOrderType === 'dining' ? currentTable : null,
+                    createdAt: new Date().toISOString(),
+                    date: new Date().toISOString().split('T')[0]
+                };
+                
+                // Save order
+                database.ref('orders').push(order)
+                    .then((ref) => {
+                        const orderId = ref.key;
+                        
+                        // Update stock for each product
+                        const updatePromises = cart.map(item => {
+                            return database.ref('products/' + item.id).once('value').then(snapshot => {
+                                const product = snapshot.val();
+                                // Only update stock if it's being tracked
+                                if (product.stock !== undefined) {
+                                    const newStock = (product.stock || 0) - item.quantity;
+                                    
+                                    // Update product stock
+                                    return database.ref('products/' + item.id).update({
+                                        stock: newStock
+                                    }).then(() => {
+                                        // Record stock history
+                                        return database.ref('stockHistory').push({
+                                            productId: item.id,
+                                            productName: product.name,
+                                            type: 'sale',
+                                            quantity: -item.quantity,
+                                            previousStock: product.stock,
+                                            newStock: newStock,
+                                            orderId: orderId,
+                                            notes: `Sale from order ${orderNumber}`,
+                                            createdAt: new Date().toISOString()
+                                        });
+                                    });
+                                }
+                            });
+                        });
+                        
+                        return Promise.all(updatePromises).then(() => {
+                            // Update credit account
+                            return database.ref('creditAccounts/' + currentCustomerId).once('value').then(snapshot => {
+                                const creditAccount = snapshot.val() || {};
+                                const newBalance = (creditAccount.balance || 0) + total;
+                                
+                                return database.ref('creditAccounts/' + currentCustomerId).set({
+                                    customerId: currentCustomerId,
+                                    customerName: currentCustomer.name,
+                                    creditLimit: currentCustomer.creditLimit || 0,
+                                    balance: newBalance,
+                                    lastUpdated: new Date().toISOString()
+                                }).then(() => {
+                                    // Record credit transaction
+                                    return database.ref('creditTransactions').push({
+                                        customerId: currentCustomerId,
+                                        customerName: currentCustomer.name,
+                                        type: 'purchase',
+                                        amount: total,
+                                        balance: newBalance,
+                                        orderId: orderId,
+                                        orderNumber: orderNumber,
+                                        createdAt: new Date().toISOString()
+                                    });
+                                });
+                            });
+                        }).then(() => {
+                            // Free up the table if dining
+                            if (currentOrderType === 'dining') {
+                                database.ref('tables/' + currentTable).update({
+                                    status: 'available'
+                                });
+                            }
+                            
+                            showNotification(`Order ${orderNumber} sent to credit management successfully`);
+                            generateBill(order);
+                            clearCart();
+                            loadHeldOrders();
+                            
+                            // Reload dashboard data
+                            loadDashboardData();
+                        });
+                    })
+                    .catch(error => {
+                        showNotification('Error sending to credit management: ' + error.message, 'error');
+                    });
+            });
+        }
+
+        // NEW: Add customer to table
+        function addCustomerToTable(tableNumber, customerName) {
+            if (!tableCustomers[tableNumber]) {
+                tableCustomers[tableNumber] = [];
+            }
+            
+            // Check if customer already exists for this table
+            const existingCustomer = tableCustomers[tableNumber].find(c => c.name === customerName);
+            if (existingCustomer) {
+                showNotification('Customer already exists for this table', 'error');
+                return;
+            }
+            
+            const customerId = 'table-customer-' + Date.now();
+            tableCustomers[tableNumber].push({
+                id: customerId,
+                name: customerName,
+                table: tableNumber
+            });
+            
+            updateTableCustomerList(tableNumber);
+            showNotification(`Customer ${customerName} added to table ${tableNumber}`);
+        }
+
+        // NEW: Update table customer list
+        function updateTableCustomerList(tableNumber) {
+            tableCustomerList.innerHTML = '';
+            
+            if (tableCustomers[tableNumber] && tableCustomers[tableNumber].length > 0) {
+                tableCustomers[tableNumber].forEach(customer => {
+                    const customerItem = document.createElement('div');
+                    customerItem.className = 'table-customer-item';
+                    customerItem.innerHTML = `
+                        <div class="table-customer-name">${customer.name}</div>
+                        <div class="table-customer-actions">
+                            <button class="btn btn-secondary select-customer" data-id="${customer.id}">Select</button>
+                            <button class="btn btn-danger remove-customer" data-id="${customer.id}">Remove</button>
+                        </div>
+                    `;
+                    tableCustomerList.appendChild(customerItem);
+                });
+                
+                // Add event listeners
+                document.querySelectorAll('.select-customer').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const customerId = btn.dataset.id;
+                        selectTableCustomer(customerId);
+                    });
+                });
+                
+                document.querySelectorAll('.remove-customer').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const customerId = btn.dataset.id;
+                        removeCustomerFromTable(tableNumber, customerId);
+                    });
+                });
+            } else {
+                tableCustomerList.innerHTML = '<p>No customers added to this table</p>';
+            }
+        }
+
+        // NEW: Select table customer
+        function selectTableCustomer(customerId) {
+            if (!currentTable) return;
+            
+            const customer = tableCustomers[currentTable].find(c => c.id === customerId);
+            if (customer) {
+                currentTableCustomer = customer;
+                document.getElementById('cashCustomerName').value = customer.name;
+                showNotification(`Selected customer: ${customer.name}`);
+                
+                // Highlight selected customer
+                document.querySelectorAll('.table-customer-item').forEach(item => {
+                    item.style.backgroundColor = '';
+                });
+                document.querySelector(`.select-customer[data-id="${customerId}"]`).closest('.table-customer-item').style.backgroundColor = '#e9f7ef';
+            }
+        }
+
+        // NEW: Remove customer from table
+        function removeCustomerFromTable(tableNumber, customerId) {
+            if (tableCustomers[tableNumber]) {
+                tableCustomers[tableNumber] = tableCustomers[tableNumber].filter(c => c.id !== customerId);
+                updateTableCustomerList(tableNumber);
+                
+                if (currentTableCustomer && currentTableCustomer.id === customerId) {
+                    currentTableCustomer = null;
+                    document.getElementById('cashCustomerName').value = '';
+                }
+                
+                showNotification('Customer removed from table');
+            }
+        }
+
+        // FIX: Load held orders with customer names - MODIFIED: Only load when clicking Load button
+        function loadHeldOrders() {
+            const customerFilter = heldOrderCustomerFilter.value.toLowerCase();
+            
+            database.ref('heldOrders').once('value').then(snapshot => {
+                const orders = snapshot.val();
+                heldOrdersTable.innerHTML = '';
+                
+                if (orders) {
+                    Object.entries(orders).forEach(([orderNumber, order]) => {
+                        // Apply customer name filter
+                        if (customerFilter && !order.customer?.name?.toLowerCase().includes(customerFilter)) {
+                            return;
+                        }
+                        
+                        const row = document.createElement('tr');
+                        // FIX: Use customer name instead of "N/A"
+                        const customerName = order.customer?.name || 'Unknown Customer';
+                        row.innerHTML = `
+                            <td>${orderNumber}</td>
+                            <td>${customerName}</td>
+                            <td>${order.table || 'N/A'}</td>
+                            <td>${order.items.length} items</td>
+                            <td>MVR ${order.total.toFixed(2)}</td>
+                            <td>${new Date(order.createdAt).toLocaleTimeString()}</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-secondary load-held-order" data-order="${orderNumber}">Load</button>
+                                <button class="btn btn-danger delete-held-order" data-order="${orderNumber}">Delete</button>
+                            </td>
+                        `;
+                        heldOrdersTable.appendChild(row);
+                    });
+                    
+                    // Add event listeners to load buttons
+                    document.querySelectorAll('.load-held-order').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            const orderNumber = btn.dataset.order;
+                            loadHeldOrder(orderNumber);
+                        });
+                    });
+                    
+                    // Add event listeners to delete buttons
+                    document.querySelectorAll('.delete-held-order').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            const orderNumber = btn.dataset.order;
+                            deleteHeldOrder(orderNumber);
+                        });
+                    });
+                }
+            });
+        }
+
+        // MODIFIED: Load held order - Only load when explicitly clicking Load button
+        function loadHeldOrder(orderNumber) {
+            database.ref('heldOrders/' + orderNumber).once('value').then(snapshot => {
+                const order = snapshot.val();
+                if (order) {
+                    // Set order type
+                    if (order.orderType === 'dining') {
+                        diningBtn.click();
+                        if (order.table) {
+                            selectTable(order.table);
+                        }
+                    } else {
+                        takeawayBtn.click();
+                    }
+                    
+                    // Set customer name
+                    if (order.customer && order.customer.name) {
+                        document.getElementById('cashCustomerName').value = order.customer.name;
+                    }
+                    
+                    // Load items to cart
+                    cart = order.items;
+                    updateCart();
+                    
+                    showNotification(`Loaded held order ${orderNumber}`);
+                    
+                    // Delete the held order after loading
+                    deleteHeldOrder(orderNumber);
+                }
+            });
+        }
+
+        // MODIFIED: Select table - No longer automatically loads held orders
+        function selectTable(tableNumber) {
+            // Deselect all tables
+            document.querySelectorAll('.table-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Select the clicked table
+            const tableBtn = document.querySelector(`.table-btn[data-table="${tableNumber}"]`);
+            tableBtn.classList.add('active');
+            
+            currentTable = tableNumber;
+            currentTableCustomer = null;
+            
+            // Initialize table customers if not exists
+            if (!tableCustomers[tableNumber]) {
+                tableCustomers[tableNumber] = [];
+            }
+            
+            // Update table customer list
+            updateTableCustomerList(tableNumber);
+            
+            // REMOVED: Automatic loading of held orders for this table
+            // Now held orders are only loaded when explicitly clicking the Load button
         }
 
         // Handle login
@@ -3221,7 +4057,7 @@ const firebaseConfig = {
                 'customers': 'ކަސްޓަމާސް',
                 'credit': 'ކްރެޑިޓް ބެލެހެއްޓުން',
                 'expenses': 'ޚަރަދުތައް ބެލެހެއްޓުން',
-                'documents': 'ޑޮކިއުމެންޓް ބެލެހެއްޓުން',
+                'documents': 'ޑޮކިއުމެންސް ބެލެހެއްޓުން',
                 'settings': 'ސެޓިން'
             };
             return titles[tab] || 'ޕްރޮޑަކްޓް ބެލެހެއްޓުން';
@@ -3522,7 +4358,7 @@ const firebaseConfig = {
                             display: false
                         },
                         x: {
-                                                        display: false
+                            display: false
                         }
                     }
                 }
@@ -3620,7 +4456,7 @@ const firebaseConfig = {
             });
         }
 
-        // Select table
+        // Select table - MODIFIED: No longer automatically loads held orders
         function selectTable(tableNumber) {
             // Deselect all tables
             document.querySelectorAll('.table-btn').forEach(btn => {
@@ -3632,60 +4468,18 @@ const firebaseConfig = {
             tableBtn.classList.add('active');
             
             currentTable = tableNumber;
+            currentTableCustomer = null;
             
-            // Load any held order for this table
-            loadHeldOrderForTable(tableNumber);
-        }
-
-        // Load held order for table
-        function loadHeldOrderForTable(tableNumber) {
-            database.ref('heldOrders').orderByChild('table').equalTo(tableNumber).once('value').then(snapshot => {
-                const orders = snapshot.val();
-                if (orders) {
-                    const orderNumber = Object.keys(orders)[0];
-                    loadHeldOrder(orderNumber);
-                }
-            });
-        }
-
-        // Load products for POS
-        function loadProductsForPOS() {
-            if (!userAccess.includes('pos')) return;
+            // Initialize table customers if not exists
+            if (!tableCustomers[tableNumber]) {
+                tableCustomers[tableNumber] = [];
+            }
             
-            database.ref('products').once('value').then(snapshot => {
-                const products = snapshot.val();
-                posProducts.innerHTML = '';
-                
-                if (products) {
-                    Object.entries(products).forEach(([id, product]) => {
-                        // Only show products with stock > 0 or no stock tracking
-                        if (product.stock === undefined || product.stock > 0) {
-                            const productCard = document.createElement('div');
-                            productCard.className = 'pos-product-card';
-                            productCard.innerHTML = `
-                                <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
-                                <h3>${product.name}</h3>
-                                <p>MVR ${product.price?.toFixed(2) || '0.00'}</p>
-                                ${product.stock !== undefined ? `<small>Stock: ${product.stock}</small>` : ''}
-                            `;
-                            productCard.addEventListener('click', () => {
-                                if (currentOrderType === 'dining' && !currentTable) {
-                                    showNotification('Please select a table first', 'error');
-                                    return;
-                                }
-                                
-                                if (!currentCustomerId && creditCustomerBtn.classList.contains('active')) {
-                                    showNotification('Please select a credit customer first', 'error');
-                                    return;
-                                }
-                                
-                                addToCart(id, product);
-                            });
-                            posProducts.appendChild(productCard);
-                        }
-                    });
-                }
-            });
+            // Update table customer list
+            updateTableCustomerList(tableNumber);
+            
+            // REMOVED: Automatic loading of held orders for this table
+            // Now held orders are only loaded when explicitly clicking the Load button
         }
 
         // Load customers for POS
@@ -3741,45 +4535,6 @@ const firebaseConfig = {
                     Remaining Credit: MVR ${remainingCredit.toFixed(2)}
                 `;
             });
-        }
-
-        // Add to cart
-        function addToCart(productId, product) {
-            if (currentOrderType === 'dining' && !currentTable) {
-                showNotification('Please select a table first', 'error');
-                return;
-            }
-            
-            if (!currentCustomerId && creditCustomerBtn.classList.contains('active')) {
-                showNotification('Please select a credit customer first', 'error');
-                return;
-            }
-            
-            // Check if product already in cart
-            const existingItem = cart.find(item => item.id === productId);
-            
-            if (existingItem) {
-                if (product.stock !== undefined && existingItem.quantity >= product.stock) {
-                    showNotification('Not enough stock available', 'error');
-                    return;
-                }
-                existingItem.quantity++;
-            } else {
-                // Check if product has stock
-                if (product.stock !== undefined && product.stock < 1) {
-                    showNotification('Product is out of stock', 'error');
-                    return;
-                }
-                
-                cart.push({
-                    id: productId,
-                    name: product.name,
-                    price: product.price,
-                    quantity: 1
-                });
-            }
-            
-            updateCart();
         }
 
         // Update cart display
@@ -3884,10 +4639,23 @@ const firebaseConfig = {
                 return;
             }
             
+            // For dining orders, use table customer if available
+            let customerName = '';
+            if (currentOrderType === 'dining' && currentTableCustomer) {
+                customerName = currentTableCustomer.name;
+            } else {
+                customerName = document.getElementById('cashCustomerName').value;
+            }
+            
+            if (!customerName) {
+                showNotification('Please enter customer name', 'error');
+                return;
+            }
+            
             const orderNumber = generateOrderNumber();
             const order = {
                 orderNumber,
-                customer: currentCustomer,
+                customer: { name: customerName },
                 items: [...cart],
                 total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
                 status: 'held',
@@ -3915,49 +4683,7 @@ const firebaseConfig = {
                 });
         }
 
-        // Load held orders
-        function loadHeldOrders() {
-            database.ref('heldOrders').once('value').then(snapshot => {
-                const orders = snapshot.val();
-                heldOrdersTable.innerHTML = '';
-                
-                if (orders) {
-                    Object.entries(orders).forEach(([orderNumber, order]) => {
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${orderNumber}</td>
-                            <td>${order.customer?.name || 'N/A'}</td>
-                            <td>${order.items.length} items</td>
-                            <td>MVR ${order.total.toFixed(2)}</td>
-                            <td>${new Date(order.createdAt).toLocaleTimeString()}</td>
-                            <td class="action-buttons">
-                                <button class="btn btn-secondary load-held-order" data-order="${orderNumber}">Load</button>
-                                <button class="btn btn-danger delete-held-order" data-order="${orderNumber}">Delete</button>
-                            </td>
-                        `;
-                        heldOrdersTable.appendChild(row);
-                    });
-                    
-                    // Add event listeners to load buttons
-                    document.querySelectorAll('.load-held-order').forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            const orderNumber = btn.dataset.order;
-                            loadHeldOrder(orderNumber);
-                        });
-                    });
-                    
-                    // Add event listeners to delete buttons
-                    document.querySelectorAll('.delete-held-order').forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            const orderNumber = btn.dataset.order;
-                            deleteHeldOrder(orderNumber);
-                        });
-                    });
-                }
-            });
-        }
-
-        // Load held order
+        // Load held order - MODIFIED: Only loads when explicitly clicking Load button
         function loadHeldOrder(orderNumber) {
             database.ref('heldOrders/' + orderNumber).once('value').then(snapshot => {
                 const order = snapshot.val();
@@ -3972,13 +4698,9 @@ const firebaseConfig = {
                         takeawayBtn.click();
                     }
                     
-                    // Select the customer
-                    if (order.customer && order.customer.id) {
-                        creditCustomerBtn.click();
-                        selectCreditCustomer(order.customer.id, order.customer);
-                    } else {
-                        cashCustomerBtn.click();
-                        document.getElementById('cashCustomerName').value = order.customer?.name || '';
+                    // Set customer name
+                    if (order.customer && order.customer.name) {
+                        document.getElementById('cashCustomerName').value = order.customer.name;
                     }
                     
                     // Load items to cart
@@ -4037,6 +4759,19 @@ const firebaseConfig = {
             const orderNumber = generateOrderNumber();
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             
+            // For dining orders, use table customer if available
+            let customerName = '';
+            if (currentOrderType === 'dining' && currentTableCustomer) {
+                customerName = currentTableCustomer.name;
+            } else {
+                customerName = document.getElementById('cashCustomerName').value;
+            }
+            
+            if (!customerName) {
+                showNotification('Please enter customer name', 'error');
+                return;
+            }
+            
             // Check if credit payment exceeds credit limit
             if (paymentMethod === 'credit' && currentCustomerId !== 'cash') {
                 database.ref('creditAccounts/' + currentCustomerId).once('value').then(snapshot => {
@@ -4049,28 +4784,22 @@ const firebaseConfig = {
                         return;
                     }
                     
-                    processOrder(orderNumber, total, paymentMethod);
+                    processOrder(orderNumber, total, paymentMethod, customerName);
                 });
             } else {
-                processOrder(orderNumber, total, paymentMethod);
+                processOrder(orderNumber, total, paymentMethod, customerName);
             }
         }
 
         // Process order
-        function processOrder(orderNumber, total, paymentMethod) {
-            // Ensure customer name is captured for cash customers
-            if (currentCustomerId === 'cash') {
-                const customerName = document.getElementById('cashCustomerName').value;
-                if (!customerName) {
-                    showNotification('Please enter customer name for cash orders', 'error');
-                    return;
-                }
-                currentCustomer = { name: customerName };
-            }
-            
+        function processOrder(orderNumber, total, paymentMethod, customerName) {
             const order = {
                 orderNumber,
-                customer: currentCustomer,
+                customer: { 
+                    name: customerName,
+                    // Store customer ID for credit orders to enable filtering
+                    id: (paymentMethod === 'credit' && currentCustomerId !== 'cash') ? currentCustomerId : null
+                },
                 items: cart,
                 total,
                 paymentMethod,
@@ -4508,7 +5237,7 @@ const firebaseConfig = {
                     .then(() => {
                         showNotification('Quotation generated successfully!');
                         previewDocument('quotation', quotation);
-                        quotationForm.reset();
+                        document.getElementById('quotationForm').reset();
                         document.getElementById('quotationItemsTable').querySelector('tbody').innerHTML = '';
                     })
                     .catch(error => {
@@ -4575,7 +5304,7 @@ const firebaseConfig = {
                     .then(() => {
                         showNotification('Invoice generated successfully!');
                         previewDocument('invoice', invoice);
-                        invoiceForm.reset();
+                        document.getElementById('invoiceForm').reset();
                         document.getElementById('invoiceItemsTable').querySelector('tbody').innerHTML = '';
                     })
                     .catch(error => {
@@ -5275,7 +6004,7 @@ const firebaseConfig = {
                                     <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>Pending</option>
                                     <option value="preparing" ${order.status === 'preparing' ? 'selected' : ''}>Preparing</option>
                                     <option value="on-the-way" ${order.status === 'on-the-way' ? 'selected' : ''}>On the Way</option>
-                                                                        <option value="delivered" ${order.status === 'delivered' ? 'selected' : ''}>Delivered</option>
+                                    <option value="delivered" ${order.status === 'delivered' ? 'selected' : ''}>Delivered</option>
                                     <option value="cancelled" ${order.status === 'cancelled' ? 'selected' : ''}>Cancelled</option>
                                 </select>
                             </td>
@@ -5569,7 +6298,7 @@ const firebaseConfig = {
                 });
         }
 
-        // Load credit accounts
+        // MODIFIED: Load credit accounts - Improved with contact information
         function loadCreditAccounts() {
             if (!userAccess.includes('credit')) return;
             
@@ -5612,53 +6341,87 @@ const firebaseConfig = {
                             }
                         }
                         
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${account.customerName}</td>
-                            <td>${account.customerId}</td>
-                            <td>MVR ${account.creditLimit?.toFixed(2) || '0.00'}</td>
-                            <td>MVR ${account.balance?.toFixed(2) || '0.00'}</td>
-                            <td><span class="${statusClass}">${status}</span></td>
-                            <td>${new Date(account.lastUpdated).toLocaleDateString()}</td>
-                            <td class="action-buttons">
-                                <button class="btn btn-info view-credit" data-id="${id}">View</button>
-                                <button class="btn btn-secondary settle-credit" data-id="${id}">Settle</button>
-                                <button class="btn btn-secondary view-credit-orders" data-id="${id}">View Orders</button>
-                            </td>
-                        `;
-                        creditTable.appendChild(row);
+                        // Get customer contact information
+                        database.ref('customers/' + id).once('value').then(customerSnapshot => {
+                            const customer = customerSnapshot.val();
+                            const contact = customer ? customer.contact : 'N/A';
+                            
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${account.customerName}</td>
+                                <td>${contact}</td>
+                                <td>MVR ${account.creditLimit?.toFixed(2) || '0.00'}</td>
+                                <td>MVR ${account.balance?.toFixed(2) || '0.00'}</td>
+                                <td><span class="${statusClass}">${status}</span></td>
+                                <td>${new Date(account.lastUpdated).toLocaleDateString()}</td>
+                                <td class="action-buttons">
+                                    <button class="btn btn-info view-credit" data-id="${id}">View</button>
+                                    <button class="btn btn-secondary settle-credit" data-id="${id}">Settle</button>
+                                    <button class="btn btn-secondary view-credit-orders" data-id="${id}">View Orders</button>
+                                    <button class="btn btn-danger delete-credit-account" data-id="${id}">Delete</button>
+                                </td>
+                            `;
+                            creditTable.appendChild(row);
+                            
+                            // Add event listeners to action buttons
+                            row.querySelector('.view-credit').addEventListener('click', () => {
+                                const customerId = id;
+                                switchSubTab('credit-transactions');
+                                document.getElementById('creditCustomerFilter').value = customerId;
+                                loadCreditTransactions();
+                            });
+                            
+                            row.querySelector('.settle-credit').addEventListener('click', () => {
+                                const customerId = id;
+                                showSettlementModal(customerId);
+                            });
+                            
+                            row.querySelector('.view-credit-orders').addEventListener('click', () => {
+                                const customerId = id;
+                                switchSubTab('credit-orders');
+                                document.getElementById('creditOrderCustomerFilter').value = customerId;
+                                loadCreditOrders();
+                            });
+                            
+                            row.querySelector('.delete-credit-account').addEventListener('click', () => {
+                                const customerId = id;
+                                if (confirm('Are you sure you want to delete this credit account? This will also delete all associated transactions.')) {
+                                    deleteCreditAccount(customerId);
+                                }
+                            });
+                        });
                     });
                 }
-                
-                // Add event listeners to action buttons
-                document.querySelectorAll('.view-credit').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const customerId = btn.dataset.id;
-                        switchSubTab('credit-transactions');
-                        document.getElementById('creditCustomerFilter').value = customerId;
-                        loadCreditTransactions();
-                    });
-                });
-                
-                document.querySelectorAll('.settle-credit').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const customerId = btn.dataset.id;
-                        showSettlementModal(customerId);
-                    });
-                });
-                
-                document.querySelectorAll('.view-credit-orders').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const customerId = btn.dataset.id;
-                        switchSubTab('credit-orders');
-                        document.getElementById('creditOrderCustomerFilter').value = customerId;
-                        loadCreditOrders();
-                    });
-                });
             });
         }
 
-        // Load credit transactions
+        // NEW: Delete credit account
+        function deleteCreditAccount(customerId) {
+            // Delete credit account
+            database.ref('creditAccounts/' + customerId).remove()
+                .then(() => {
+                    // Delete all credit transactions for this customer
+                    return database.ref('creditTransactions').orderByChild('customerId').equalTo(customerId).once('value').then(snapshot => {
+                        const transactions = snapshot.val();
+                        if (transactions) {
+                            const deletePromises = Object.keys(transactions).map(transactionId => {
+                                return database.ref('creditTransactions/' + transactionId).remove();
+                            });
+                            return Promise.all(deletePromises);
+                        }
+                    });
+                })
+                .then(() => {
+                    showNotification('Credit account and all associated transactions deleted successfully!');
+                    loadCreditAccounts();
+                    loadCreditTransactions();
+                })
+                .catch(error => {
+                    showNotification('Error deleting credit account: ' + error.message, 'error');
+                });
+        }
+
+        // MODIFIED: Load credit transactions - Improved with contact information
         function loadCreditTransactions() {
             if (!userAccess.includes('credit')) return;
             
@@ -5678,33 +6441,76 @@ const firebaseConfig = {
                         if (dateFrom && transaction.createdAt < dateFrom) return;
                         if (dateTo && transaction.createdAt > dateTo) return;
                         
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${new Date(transaction.createdAt).toLocaleDateString()}</td>
-                            <td>${transaction.customerName}</td>
-                            <td>${transaction.type}</td>
-                            <td>MVR ${transaction.amount?.toFixed(2) || '0.00'}</td>
-                            <td>MVR ${transaction.balance?.toFixed(2) || '0.00'}</td>
-                            <td>${transaction.orderNumber || 'N/A'}</td>
-                            <td class="action-buttons">
-                                ${transaction.type === 'purchase' ? `<button class="btn btn-secondary view-order" data-id="${transaction.orderId}">View Order</button>` : ''}
-                            </td>
-                        `;
-                        creditTransactionsTable.appendChild(row);
+                        // Get customer contact information
+                        database.ref('customers/' + transaction.customerId).once('value').then(customerSnapshot => {
+                            const customer = customerSnapshot.val();
+                            const contact = customer ? customer.contact : 'N/A';
+                            
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${new Date(transaction.createdAt).toLocaleDateString()}</td>
+                                <td>${transaction.customerName}</td>
+                                <td>${contact}</td>
+                                <td>${transaction.type}</td>
+                                <td>MVR ${transaction.amount?.toFixed(2) || '0.00'}</td>
+                                <td>MVR ${transaction.balance?.toFixed(2) || '0.00'}</td>
+                                <td>${transaction.orderNumber || 'N/A'}</td>
+                                <td class="action-buttons">
+                                    ${transaction.type === 'purchase' ? `<button class="btn btn-secondary view-order" data-id="${transaction.orderId}">View Order</button>` : ''}
+                                    <button class="btn btn-danger delete-credit-transaction" data-id="${id}">Delete</button>
+                                </td>
+                            `;
+                            creditTransactionsTable.appendChild(row);
+                            
+                            // Add event listeners to view order buttons
+                            if (transaction.type === 'purchase') {
+                                row.querySelector('.view-order').addEventListener('click', () => {
+                                    const orderId = transaction.orderId;
+                                    viewOrder(orderId);
+                                });
+                            }
+                            
+                            // Add event listener to delete transaction button
+                            row.querySelector('.delete-credit-transaction').addEventListener('click', () => {
+                                const transactionId = id;
+                                if (confirm('Are you sure you want to delete this credit transaction?')) {
+                                    deleteCreditTransaction(transactionId, transaction.customerId, transaction.amount);
+                                }
+                            });
+                        });
                     });
                 }
-                
-                // Add event listeners to view order buttons
-                document.querySelectorAll('.view-order').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const orderId = btn.dataset.id;
-                        viewOrder(orderId);
-                    });
-                });
             });
         }
 
-        // Load credit orders
+        // NEW: Delete credit transaction
+        function deleteCreditTransaction(transactionId, customerId, amount) {
+            // Delete the transaction
+            database.ref('creditTransactions/' + transactionId).remove()
+                .then(() => {
+                    // Update the credit account balance
+                    return database.ref('creditAccounts/' + customerId).once('value').then(snapshot => {
+                        const account = snapshot.val();
+                        if (account) {
+                            const newBalance = account.balance - amount;
+                            return database.ref('creditAccounts/' + customerId).update({
+                                balance: newBalance,
+                                lastUpdated: new Date().toISOString()
+                            });
+                        }
+                    });
+                })
+                .then(() => {
+                    showNotification('Credit transaction deleted successfully!');
+                    loadCreditTransactions();
+                    loadCreditAccounts();
+                })
+                .catch(error => {
+                    showNotification('Error deleting credit transaction: ' + error.message, 'error');
+                });
+        }
+
+        // FIXED: Load credit orders - Now properly shows credit orders with customer information
         function loadCreditOrders() {
             if (!userAccess.includes('credit')) return;
             
@@ -5721,41 +6527,79 @@ const firebaseConfig = {
                     Object.entries(orders).forEach(([id, order]) => {
                         // Apply filters - only show credit orders
                         if (order.paymentMethod !== 'credit') return;
+                        
+                        // Apply customer filter
                         if (customerFilter && order.customer?.id !== customerFilter) return;
+                        
+                        // Apply date filter
                         if (dateFrom && order.date < dateFrom) return;
                         if (dateTo && order.date > dateTo) return;
                         
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${order.orderNumber || id}</td>
-                            <td>${order.customer?.name || 'N/A'}</td>
-                            <td>${order.date || 'N/A'}</td>
-                            <td>MVR ${order.total?.toFixed(2) || '0.00'}</td>
-                            <td>${order.status || 'pending'}</td>
-                            <td class="action-buttons">
-                                <button class="btn btn-secondary view-order" data-id="${id}">View</button>
-                                <button class="btn btn-info view-invoice" data-id="${id}">Invoice</button>
-                            </td>
-                        `;
-                        creditOrdersTable.appendChild(row);
+                        // Get customer contact information
+                        const customerId = order.customer?.id;
+                        if (customerId) {
+                            database.ref('customers/' + customerId).once('value').then(customerSnapshot => {
+                                const customer = customerSnapshot.val();
+                                const contact = customer ? customer.contact : 'N/A';
+                                
+                                const row = document.createElement('tr');
+                                row.innerHTML = `
+                                    <td>${order.orderNumber || id}</td>
+                                    <td>${order.customer?.name || 'N/A'}</td>
+                                    <td>${contact}</td>
+                                    <td>${order.date || 'N/A'}</td>
+                                    <td>MVR ${order.total?.toFixed(2) || '0.00'}</td>
+                                    <td>${order.status || 'pending'}</td>
+                                    <td class="action-buttons">
+                                        <button class="btn btn-secondary view-order" data-id="${id}">View</button>
+                                        <button class="btn btn-info view-invoice" data-id="${id}">Invoice</button>
+                                    </td>
+                                `;
+                                creditOrdersTable.appendChild(row);
+                                
+                                // Add event listeners to view buttons
+                                row.querySelector('.view-order').addEventListener('click', () => {
+                                    const orderId = id;
+                                    viewOrder(orderId);
+                                });
+                                
+                                // Add event listeners to invoice buttons
+                                row.querySelector('.view-invoice').addEventListener('click', () => {
+                                    const orderId = id;
+                                    viewOrderInvoice(orderId);
+                                });
+                            });
+                        } else {
+                            // For orders without customer ID (legacy data), still show them
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${order.orderNumber || id}</td>
+                                <td>${order.customer?.name || 'N/A'}</td>
+                                <td>N/A</td>
+                                <td>${order.date || 'N/A'}</td>
+                                <td>MVR ${order.total?.toFixed(2) || '0.00'}</td>
+                                <td>${order.status || 'pending'}</td>
+                                <td class="action-buttons">
+                                    <button class="btn btn-secondary view-order" data-id="${id}">View</button>
+                                    <button class="btn btn-info view-invoice" data-id="${id}">Invoice</button>
+                                </td>
+                            `;
+                            creditOrdersTable.appendChild(row);
+                            
+                            // Add event listeners to view buttons
+                            row.querySelector('.view-order').addEventListener('click', () => {
+                                const orderId = id;
+                                viewOrder(orderId);
+                            });
+                            
+                            // Add event listeners to invoice buttons
+                            row.querySelector('.view-invoice').addEventListener('click', () => {
+                                const orderId = id;
+                                viewOrderInvoice(orderId);
+                            });
+                        }
                     });
                 }
-                
-                // Add event listeners to view buttons
-                document.querySelectorAll('.view-order').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const orderId = btn.dataset.id;
-                        viewOrder(orderId);
-                    });
-                });
-                
-                // Add event listeners to invoice buttons
-                document.querySelectorAll('.view-invoice').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        const orderId = btn.dataset.id;
-                        viewOrderInvoice(orderId);
-                    });
-                });
             });
         }
 
@@ -6017,7 +6861,7 @@ const firebaseConfig = {
                         loadProducts();
                     })
                     .catch(error => {
-                                                showNotification('Error deleting product: ' + error.message, 'error');
+                        showNotification('Error deleting product: ' + error.message, 'error');
                     });
             }
         }
@@ -6619,31 +7463,31 @@ const firebaseConfig = {
         document.addEventListener('DOMContentLoaded', initAdmin);
     </script>
     <script>
-           // Full screen functionality
-            document.getElementById('fullscreen-btn').addEventListener('click', function() {
-                const elem = document.documentElement;
-                if (elem.requestFullscreen) {
-                    elem.requestFullscreen();
-                } else if (elem.webkitRequestFullscreen) { /* Safari */
-                    elem.webkitRequestFullscreen();
-                } else if (elem.msRequestFullscreen) { /* IE11 */
-                    elem.msRequestFullscreen();
-                }
-                
-                document.body.classList.add('fullscreen-mode');
-            });
+        // Full screen functionality
+        document.getElementById('fullscreen-btn').addEventListener('click', function() {
+            const elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
             
-            document.getElementById('exit-fullscreen-btn').addEventListener('click', function() {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) { /* Safari */
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) { /* IE11 */
-                    document.msExitFullscreen();
-                }
-                
-                document.body.classList.remove('fullscreen-mode');
-            });
+            document.body.classList.add('fullscreen-mode');
+        });
+        
+        document.getElementById('exit-fullscreen-btn').addEventListener('click', function() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) { /* Safari */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE11 */
+                document.msExitFullscreen();
+            }
+            
+            document.body.classList.remove('fullscreen-mode');
+        });
     </script>
     
 </body>
