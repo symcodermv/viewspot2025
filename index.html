@@ -15,6 +15,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
     
+
+
+    
     <style>
         /* Custom font for Dhivehi */
         @font-face {
@@ -1407,6 +1410,46 @@
         .held-order-customer-item.active {
             background-color: #4a9e5b;
             color: white;
+        }
+        
+        /* NEW: Enhanced Cart Controls */
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 5px;
+        }
+        
+        .quantity-display {
+            min-width: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .quantity-control-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: none;
+            background-color: #4a9e5b;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .quantity-control-btn:hover {
+            background-color: #3a7d48;
+        }
+        
+        .quantity-control-btn.remove {
+            background-color: #dc3545;
+        }
+        
+        .quantity-control-btn.remove:hover {
+            background-color: #c82333;
         }
         
         /* Responsive */
@@ -3420,14 +3463,55 @@
                                     return;
                                 }
                                 
-                                // Show quantity input modal
-                                showQuantityModal(id, product);
+                                // MODIFIED: Directly add product to cart with quantity 1
+                                addToCartDirect(id, product);
                             });
                             posProducts.appendChild(productCard);
                         }
                     });
                 }
             });
+        }
+
+        // NEW: Directly add product to cart
+        function addToCartDirect(productId, product) {
+            if (currentOrderType === 'dining' && !currentTable) {
+                showNotification('Please select a table first', 'error');
+                return;
+            }
+            
+            if (!currentCustomerId && creditCustomerBtn.classList.contains('active')) {
+                showNotification('Please select a credit customer first', 'error');
+                return;
+            }
+            
+            // Check if product already in cart
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                // Check stock if available
+                if (product.stock !== undefined && existingItem.quantity + 1 > product.stock) {
+                    showNotification('Not enough stock available', 'error');
+                    return;
+                }
+                existingItem.quantity += 1;
+            } else {
+                // Check if product has stock
+                if (product.stock !== undefined && product.stock < 1) {
+                    showNotification('Not enough stock available', 'error');
+                    return;
+                }
+                
+                cart.push({
+                    id: productId,
+                    name: product.name,
+                    price: product.price,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showNotification(`${product.name} added to cart`);
         }
 
         // NEW: Show quantity input modal
@@ -4080,8 +4164,7 @@
                 loadOrders();
             });
         }
-
-        // Show notification
+  // Show notification
         function showNotification(message, type = 'success') {
             const notification = document.createElement('div');
             notification.className = `notification ${type === 'error' ? 'notification-error' : type === 'warning' ? 'notification-warning' : ''}`;
@@ -7489,6 +7572,409 @@
             document.body.classList.remove('fullscreen-mode');
         });
     </script>
-    
+      <script>
+        // Global variables
+        let selectedProductForQuickQuantity = null;
+
+        // DOM elements for enhanced cart
+        const quickQuantityModal = document.getElementById('quickQuantityModal');
+        const quickQuantityTitle = document.getElementById('quickQuantityTitle');
+        const quickQuantityInput = document.getElementById('quickQuantityInput');
+        const quickQuantityDecrease = document.getElementById('quickQuantityDecrease');
+        const quickQuantityIncrease = document.getElementById('quickQuantityIncrease');
+        const cancelQuickQuantity = document.getElementById('cancelQuickQuantity');
+        const confirmQuickQuantity = document.getElementById('confirmQuickQuantity');
+
+        // Initialize enhanced cart functionality
+        function initEnhancedCart() {
+            // Quick quantity modal event listeners
+            quickQuantityDecrease.addEventListener('click', () => {
+                const currentValue = parseInt(quickQuantityInput.value) || 1;
+                if (currentValue > 1) {
+                    quickQuantityInput.value = currentValue - 1;
+                }
+            });
+            
+            quickQuantityIncrease.addEventListener('click', () => {
+                const currentValue = parseInt(quickQuantityInput.value) || 1;
+                quickQuantityInput.value = currentValue + 1;
+            });
+            
+            cancelQuickQuantity.addEventListener('click', () => {
+                quickQuantityModal.style.display = 'none';
+                selectedProductForQuickQuantity = null;
+            });
+            
+            confirmQuickQuantity.addEventListener('click', () => {
+                if (selectedProductForQuickQuantity) {
+                    const quantity = parseInt(quickQuantityInput.value) || 1;
+                    addToCartWithQuantity(selectedProductForQuickQuantity.id, selectedProductForQuickQuantity.product, quantity);
+                    quickQuantityModal.style.display = 'none';
+                    selectedProductForQuickQuantity = null;
+                }
+            });
+            
+            // Allow direct input in quick quantity modal
+            quickQuantityInput.addEventListener('input', () => {
+                let value = parseInt(quickQuantityInput.value) || 1;
+                if (value < 1) value = 1;
+                quickQuantityInput.value = value;
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === quickQuantityModal) {
+                    quickQuantityModal.style.display = 'none';
+                    selectedProductForQuickQuantity = null;
+                }
+            });
+        }
+
+        // MODIFIED: Load products for POS with enhanced functionality
+        function loadProductsForPOS() {
+            if (!userAccess.includes('pos')) return;
+            
+            database.ref('products').once('value').then(snapshot => {
+                const products = snapshot.val();
+                posProducts.innerHTML = '';
+                
+                // Load categories for tabs
+                database.ref('categories').once('value').then(catSnapshot => {
+                    const categories = catSnapshot.val();
+                    categoryTabs.innerHTML = '';
+                    
+                    // Add "All" tab
+                    const allTab = document.createElement('div');
+                    allTab.className = 'category-tab active';
+                    allTab.textContent = 'All';
+                    allTab.dataset.category = 'all';
+                    allTab.addEventListener('click', () => {
+                        document.querySelectorAll('.category-tab').forEach(tab => tab.classList.remove('active'));
+                        allTab.classList.add('active');
+                        currentCategoryFilter = 'all';
+                        filterProductsByCategory();
+                    });
+                    categoryTabs.appendChild(allTab);
+                    
+                    // Add category tabs
+                    if (categories) {
+                        Object.values(categories).forEach(category => {
+                            const categoryTab = document.createElement('div');
+                            categoryTab.className = 'category-tab';
+                            categoryTab.textContent = category;
+                            categoryTab.dataset.category = category;
+                            categoryTab.addEventListener('click', () => {
+                                document.querySelectorAll('.category-tab').forEach(tab => tab.classList.remove('active'));
+                                categoryTab.classList.add('active');
+                                currentCategoryFilter = category;
+                                filterProductsByCategory();
+                            });
+                            categoryTabs.appendChild(categoryTab);
+                        });
+                    }
+                });
+                
+                if (products) {
+                    Object.entries(products).forEach(([id, product]) => {
+                        // Only show products with stock > 0 or no stock tracking
+                        if (product.stock === undefined || product.stock > 0) {
+                            const productCard = document.createElement('div');
+                            productCard.className = 'pos-product-card';
+                            productCard.dataset.category = product.category || 'Uncategorized';
+                            productCard.innerHTML = `
+                                <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/150?text=No+Image'">
+                                <h3>${product.name}</h3>
+                                <p>MVR ${product.price?.toFixed(2) || '0.00'}</p>
+                                ${product.stock !== undefined ? `<small>Stock: ${product.stock}</small>` : ''}
+                                <button class="product-quick-add" data-product-id="${id}">
+                                    <i class=""></i>
+                                </button>
+                            `;
+                            
+                            // Click on product card adds with quantity 1
+                            productCard.addEventListener('click', (e) => {
+                                // Don't trigger if quick add button was clicked
+                                if (!e.target.closest('.product-quick-add')) {
+                                    if (currentOrderType === 'dining' && !currentTable) {
+                                        showNotification('Please select a table first', 'error');
+                                        return;
+                                    }
+                                    
+                                    if (!currentCustomerId && creditCustomerBtn.classList.contains('active')) {
+                                        showNotification('Please select a credit customer first', 'error');
+                                        return;
+                                    }
+                                    
+                                    // Directly add product to cart with quantity 1
+                                    addToCartDirect(id, product);
+                                }
+                            });
+                            
+                            // Quick add button shows quantity modal
+                            const quickAddBtn = productCard.querySelector('.product-quick-add');
+                            quickAddBtn.addEventListener('click', (e) => {
+                                e.stopPropagation(); // Prevent card click event
+                                
+                                if (currentOrderType === 'dining' && !currentTable) {
+                                    showNotification('Please select a table first', 'error');
+                                    return;
+                                }
+                                
+                                if (!currentCustomerId && creditCustomerBtn.classList.contains('active')) {
+                                    showNotification('Please select a credit customer first', 'error');
+                                    return;
+                                }
+                                
+                                showQuickQuantityModal(id, product);
+                            });
+                            
+                            posProducts.appendChild(productCard);
+                        }
+                    });
+                }
+            });
+        }
+
+        // NEW: Show quick quantity modal
+        function showQuickQuantityModal(productId, product) {
+            selectedProductForQuickQuantity = { id: productId, product: product };
+            quickQuantityTitle.textContent = `Quantity for ${product.name}`;
+            quickQuantityInput.value = '1';
+            quickQuantityInput.focus();
+            quickQuantityInput.select();
+            quickQuantityModal.style.display = 'flex';
+        }
+
+        // NEW: Add to cart with specified quantity
+        function addToCartWithQuantity(productId, product, quantity) {
+            if (currentOrderType === 'dining' && !currentTable) {
+                showNotification('Please select a table first', 'error');
+                return;
+            }
+            
+            if (!currentCustomerId && creditCustomerBtn.classList.contains('active')) {
+                showNotification('Please select a credit customer first', 'error');
+                return;
+            }
+            
+            // Check if product already in cart
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                if (product.stock !== undefined && existingItem.quantity + quantity > product.stock) {
+                    showNotification('Not enough stock available', 'error');
+                    return;
+                }
+                existingItem.quantity += quantity;
+            } else {
+                // Check if product has stock
+                if (product.stock !== undefined && product.stock < quantity) {
+                    showNotification('Not enough stock available', 'error');
+                    return;
+                }
+                
+                cart.push({
+                    id: productId,
+                    name: product.name,
+                    price: product.price,
+                    quantity: quantity
+                });
+            }
+            
+            updateCart();
+            showNotification(`${quantity} x ${product.name} added to cart`);
+        }
+
+        // NEW: Directly add product to cart
+        function addToCartDirect(productId, product) {
+            if (currentOrderType === 'dining' && !currentTable) {
+                showNotification('Please select a table first', 'error');
+                return;
+            }
+            
+            if (!currentCustomerId && creditCustomerBtn.classList.contains('active')) {
+                showNotification('Please select a credit customer first', 'error');
+                return;
+            }
+            
+            // Check if product already in cart
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                // Check stock if available
+                if (product.stock !== undefined && existingItem.quantity + 1 > product.stock) {
+                    showNotification('Not enough stock available', 'error');
+                    return;
+                }
+                existingItem.quantity += 1;
+            } else {
+                // Check if product has stock
+                if (product.stock !== undefined && product.stock < 1) {
+                    showNotification('Not enough stock available', 'error');
+                    return;
+                }
+                
+                cart.push({
+                    id: productId,
+                    name: product.name,
+                    price: product.price,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showNotification(`${product.name} added to cart`);
+        }
+
+        // UPDATED: Enhanced cart display with manual quantity input
+        function updateCart() {
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="empty-cart">No items added yet</p>';
+                cartTotal.textContent = 'Total: MVR 0.00';
+                return;
+            }
+            
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">MVR ${item.price.toFixed(2)} each</div>
+                        <div class="cart-item-controls">
+                            <button class="quantity-control-btn remove" data-index="${index}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button class="quantity-control-btn" data-action="decrease" data-index="${index}">-</button>
+                            <input type="number" class="quantity-input" data-index="${index}" value="${item.quantity}" min="1">
+                            <button class="quantity-control-btn" data-action="increase" data-index="${index}">+</button>
+                        </div>
+                    </div>
+                    <div class="cart-item-total">
+                        MVR ${itemTotal.toFixed(2)}
+                    </div>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            cartTotal.textContent = `Total: MVR ${total.toFixed(2)}`;
+            
+            // Add event listeners to cart controls
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                input.addEventListener('change', (e) => {
+                    const index = parseInt(e.target.dataset.index);
+                    const newQuantity = parseInt(e.target.value) || 1;
+                    updateCartItemQuantity(index, newQuantity);
+                });
+                
+                input.addEventListener('blur', (e) => {
+                    const index = parseInt(e.target.dataset.index);
+                    const newQuantity = parseInt(e.target.value) || 1;
+                    if (newQuantity < 1) {
+                        e.target.value = 1;
+                        updateCartItemQuantity(index, 1);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.quantity-control-btn[data-action="decrease"]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const index = parseInt(btn.dataset.index);
+                    decreaseCartQuantity(index);
+                });
+            });
+            
+            document.querySelectorAll('.quantity-control-btn[data-action="increase"]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const index = parseInt(btn.dataset.index);
+                    increaseCartQuantity(index);
+                });
+            });
+            
+            document.querySelectorAll('.quantity-control-btn.remove').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const index = parseInt(btn.dataset.index);
+                    removeCartItem(index);
+                });
+            });
+        }
+
+        // NEW: Update cart item quantity manually
+        function updateCartItemQuantity(index, newQuantity) {
+            if (newQuantity < 1) {
+                newQuantity = 1;
+            }
+            
+            const productId = cart[index].id;
+            
+            // Check product stock
+            database.ref('products/' + productId).once('value').then(snapshot => {
+                const product = snapshot.val();
+                if (product.stock !== undefined && newQuantity > product.stock) {
+                    showNotification('Not enough stock available', 'error');
+                    // Reset to previous quantity
+                    document.querySelector(`.quantity-input[data-index="${index}"]`).value = cart[index].quantity;
+                    return;
+                }
+                
+                cart[index].quantity = newQuantity;
+                updateCart();
+            });
+        }
+
+        // NEW: Decrease cart item quantity
+        function decreaseCartQuantity(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity--;
+                updateCart();
+            }
+        }
+
+        // NEW: Increase cart item quantity
+        function increaseCartQuantity(index) {
+            const productId = cart[index].id;
+            
+            // Check product stock
+            database.ref('products/' + productId).once('value').then(snapshot => {
+                const product = snapshot.val();
+                if (product.stock !== undefined && cart[index].quantity >= product.stock) {
+                    showNotification('Not enough stock available', 'error');
+                    return;
+                }
+                
+                cart[index].quantity++;
+                updateCart();
+            });
+        }
+
+        // NEW: Remove item from cart
+        function removeCartItem(index) {
+            const itemName = cart[index].name;
+            cart.splice(index, 1);
+            updateCart();
+            showNotification(`${itemName} removed from cart`);
+        }
+
+        // Initialize the admin panel with enhanced cart
+        function initAdmin() {
+            // Previous initialization code remains the same...
+            
+            // Add enhanced cart initialization
+            initEnhancedCart();
+            
+            // Rest of your existing initialization code...
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initAdmin);
+    </script>
 </body>
 </html>
