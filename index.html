@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SYMCODERMV SOFTWARE</title>
+    <title>VIEWSPOT - Complete Management System</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
@@ -1517,6 +1517,147 @@
             }
         }
     </style>
+    <style>
+        /* Enhanced invoice styles */
+.invoice-logo img {
+    max-width: 150px;
+    max-height: 80px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.bank-details {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    border-left: 4px solid #4a9e5b;
+}
+
+.document-notes {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.invoice-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+/* Enhanced settings form */
+.settings-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.settings-section h3 {
+    color: #4a9e5b;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+    </style>
+      <style>
+        /* Previous styles remain the same */
+        
+        /* Logo Upload Styles */
+        .logo-upload-container {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        
+        .logo-preview {
+            max-width: 200px;
+            max-height: 100px;
+            margin: 10px auto;
+            display: block;
+        }
+        
+        .logo-upload-btn {
+            background-color: #4a9e5b;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .logo-upload-btn:hover {
+            background-color: #3a7d48;
+        }
+        
+        .logo-remove-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .logo-remove-btn:hover {
+            background-color: #c82333;
+        }
+        
+        .logo-upload-instructions {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        /* Enhanced Invoice Header Styles */
+        .invoice-header-center {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .invoice-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .invoice-logo-img {
+            max-width: 150px;
+            max-height: 80px;
+            margin-bottom: 10px;
+        }
+        
+        .invoice-store-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4a9e5b;
+            margin: 5px 0;
+        }
+        
+        .invoice-store-details {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        .document-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #333;
+            border-top: 2px solid #4a9e5b;
+            border-bottom: 2px solid #4a9e5b;
+            padding: 8px 0;
+        }
+    </style>
 </head>
 <body>
     
@@ -2710,37 +2851,72 @@
                 </div>
             </div>
 
-            <!-- Settings Tab -->
-            <div id="settings" class="tab-content">
-                <div class="content-section">
-                    <h2>Store Settings</h2>
-                    <form id="storeSettingsForm">
+           <!-- Settings Tab -->
+   <!-- Settings Tab -->
+    <div id="settings" class="tab-content">
+        <div class="content-section">
+            <h2>Store Settings</h2>
+            <form id="storeSettingsForm">
+                <div class="settings-section">
+                    <h3>Basic Information</h3>
+                    <div class="form-group">
+                        <label for="storeName">Store Name</label>
+                        <input type="text" id="storeName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="storeAddress">Store Address</label>
+                        <textarea id="storeAddress"></textarea>
+                    </div>
+                    <div class="form-row">
                         <div class="form-group">
-                            <label for="storeName">Store Name</label>
-                            <input type="text" id="storeName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="storeAddress">Store Address</label>
-                            <textarea id="storeAddress"></textarea>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="storePhone">Phone</label>
-                                <input type="text" id="storePhone">
-                            </div>
-                            <div class="form-group">
-                                <label for="storeEmail">Email</label>
-                                <input type="email" id="storeEmail">
-                            </div>
+                            <label for="storePhone">Phone</label>
+                            <input type="text" id="storePhone">
                         </div>
                         <div class="form-group">
-                            <label for="tableCount">Number of Tables</label>
-                            <input type="number" id="tableCount" min="1" max="50" value="10">
+                            <label for="storeEmail">Email</label>
+                            <input type="email" id="storeEmail">
                         </div>
-                        <button type="submit" class="btn">Save Settings</button>
-                    </form>
+                    </div>
                 </div>
-            </div>
+                
+                <div class="settings-section">
+                    <h3>Branding</h3>
+                    <div class="logo-upload-container">
+                        <h4>Company Logo</h4>
+                        <div id="logoPreviewContainer">
+                            <img id="logoPreview" class="logo-preview" style="display: none;">
+                            <p id="noLogoText">No logo uploaded</p>
+                        </div>
+                        <div>
+                            <input type="file" id="logoUpload" accept="image/*" style="display: none;">
+                            <button type="button" class="logo-upload-btn" id="uploadLogoBtn">Upload Logo</button>
+                            <button type="button" class="logo-remove-btn" id="removeLogoBtn" style="display: none;">Remove Logo</button>
+                        </div>
+                        <p class="logo-upload-instructions">
+                            Recommended: PNG or JPG format, max 500KB. Logo will appear on invoices and quotations.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="settings-section">
+                    <h3>Bank Details</h3>
+                    <div class="form-group">
+                        <label for="bankDetails">Bank Information</label>
+                        <textarea id="bankDetails" placeholder="Bank Name: Your Bank Name&#10;Account Number: 123456789&#10;Account Holder: Your Company Name&#10;IBAN: Your IBAN (if applicable)&#10;Swift/BIC Code: Your Swift Code"></textarea>
+                        <small>Enter your bank details (one per line). These will appear on invoices and quotations.</small>
+                    </div>
+                </div>
+                
+                <div class="settings-section">
+                    <h3>POS Settings</h3>
+                    <div class="form-group">
+                        <label for="tableCount">Number of Tables</label>
+                        <input type="number" id="tableCount" min="1" max="50" value="10">
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn">Save Settings</button>
+            </form>
         </div>
     </div>
 
@@ -5594,71 +5770,134 @@
             initAdmin();
         }
 
-        // Download document as PDF
-        function downloadDocumentAsPdf() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            
-            // Add content to PDF
+       function downloadDocumentAsPdf() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    // Get settings
+    const storeName = document.getElementById('storeName').value || 'symcodermv-cafe';
+    const storeAddress = document.getElementById('storeAddress').value || '';
+    const storePhone = document.getElementById('storePhone').value || '';
+    const storeEmail = document.getElementById('storeEmail').value || '';
+    const storeLogo = document.getElementById('storeLogo').value || '';
+    const bankDetails = document.getElementById('bankDetails').value || '';
+    
+    let yPosition = 15;
+    
+    // Add logo if available
+    if (storeLogo) {
+        try {
+            // Note: This is a simplified approach. For production, you might need to handle CORS and image loading properly
+            doc.addImage(storeLogo, 'PNG', 14, yPosition, 40, 20);
+            yPosition += 25;
+        } catch (error) {
+            console.error('Error loading logo:', error);
+            // Fallback to text logo
             doc.setFontSize(16);
-            doc.text(currentDocument.type === 'quotation' ? 'QUOTATION' : 'INVOICE', 105, 15, { align: 'center' });
-            
-            doc.setFontSize(10);
-            doc.text(`Date: ${currentDocument.date}`, 15, 25);
-            if (currentDocument.type === 'quotation') {
-                doc.text(`Valid Until: ${currentDocument.validUntil}`, 15, 30);
-            } else {
-                doc.text(`Due Date: ${currentDocument.dueDate}`, 15, 30);
-            }
-            doc.text(`${currentDocument.type === 'quotation' ? 'Quotation' : 'Invoice'} #: ${currentDocument.number}`, 15, 35);
-            
-            // Add customer details
-            doc.setFontSize(12);
-            doc.text('Bill To:', 15, 50);
-            doc.setFontSize(10);
-            doc.text(currentDocument.customer.name, 15, 55);
-            doc.text(currentDocument.customer.contact, 15, 60);
-            doc.text(currentDocument.customer.address || '', 15, 65);
-            
-            // Add items table
-            const tableColumn = ["Description", "Qty", "Price", "Total"];
-            const tableRows = [];
-            
-            currentDocument.items.forEach(item => {
-                const itemData = [
-                    item.product,
-                    item.quantity.toString(),
-                    `MVR ${item.price.toFixed(2)}`,
-                    `MVR ${item.total.toFixed(2)}`
-                ];
-                tableRows.push(itemData);
-            });
-            
-            // Add total row
-            tableRows.push([
-                "",
-                "",
-                "Total:",
-                `MVR ${currentDocument.total.toFixed(2)}`
-            ]);
-            
-            doc.autoTable({
-                startY: 75,
-                head: [tableColumn],
-                body: tableRows,
-                theme: 'grid',
-                styles: { fontSize: 10 },
-                headStyles: { fillColor: [74, 158, 91] }
-            });
-            
-            // Add notes if available
-            if (currentDocument.notes) {
-                doc.text(`Notes: ${currentDocument.notes}`, 15, doc.lastAutoTable.finalY + 10);
-            }
-            
-            // Save the PDF
-            doc.save(`${currentDocument.type}-${currentDocument.number}.pdf`);
+            doc.text(storeName, 105, yPosition, { align: 'center' });
+            yPosition += 10;
         }
+    } else {
+        // Text logo
+        doc.setFontSize(16);
+        doc.text(storeName, 105, yPosition, { align: 'center' });
+        yPosition += 10;
+    }
+    
+    // Add company details
+    doc.setFontSize(10);
+    doc.text(storeAddress, 105, yPosition, { align: 'center' });
+    yPosition += 5;
+    doc.text(`Tel: ${storePhone} | Email: ${storeEmail}`, 105, yPosition, { align: 'center' });
+    yPosition += 10;
+    
+    // Add document title
+    doc.setFontSize(16);
+    doc.text(currentDocument.type === 'quotation' ? 'QUOTATION' : 'INVOICE', 105, yPosition, { align: 'center' });
+    yPosition += 15;
+    
+    // Add document details
+    doc.setFontSize(10);
+    doc.text(`Date: ${currentDocument.date}`, 14, yPosition);
+    if (currentDocument.type === 'quotation') {
+        doc.text(`Valid Until: ${currentDocument.validUntil}`, 14, yPosition + 5);
+        yPosition += 10;
+    } else {
+        doc.text(`Due Date: ${currentDocument.dueDate}`, 14, yPosition + 5);
+        yPosition += 10;
+    }
+    doc.text(`${currentDocument.type === 'quotation' ? 'Quotation' : 'Invoice'} #: ${currentDocument.number}`, 14, yPosition);
+    
+    // Add customer details
+    yPosition += 15;
+    doc.setFontSize(12);
+    doc.text(currentDocument.type === 'quotation' ? 'Quotation To:' : 'Bill To:', 14, yPosition);
+    doc.setFontSize(10);
+    doc.text(currentDocument.customer.name, 14, yPosition + 5);
+    doc.text(currentDocument.customer.contact, 14, yPosition + 10);
+    doc.text(currentDocument.customer.address || '', 14, yPosition + 15);
+    
+    // Add items table
+    const tableColumn = ["Description", "Qty", "Price", "Total"];
+    const tableRows = [];
+    
+    currentDocument.items.forEach(item => {
+        const itemData = [
+            item.product,
+            item.quantity.toString(),
+            `MVR ${item.price.toFixed(2)}`,
+            `MVR ${item.total.toFixed(2)}`
+        ];
+        tableRows.push(itemData);
+    });
+    
+    // Add total row
+    tableRows.push([
+        "",
+        "",
+        "Total:",
+        `MVR ${currentDocument.total.toFixed(2)}`
+    ]);
+    
+    doc.autoTable({
+        startY: yPosition + 20,
+        head: [tableColumn],
+        body: tableRows,
+        theme: 'grid',
+        styles: { fontSize: 10 },
+        headStyles: { fillColor: [74, 158, 91] }
+    });
+    
+    // Add notes if available
+    let finalY = doc.lastAutoTable.finalY + 10;
+    if (currentDocument.notes) {
+        doc.text(`Notes: ${currentDocument.notes}`, 14, finalY);
+        finalY += 10;
+    }
+    
+    // Add bank details if available
+    if (bankDetails) {
+        doc.setFontSize(10);
+        doc.setFont(undefined, 'bold');
+        doc.text('Bank Details:', 14, finalY);
+        doc.setFont(undefined, 'normal');
+        
+        const bankLines = bankDetails.split('\n');
+        bankLines.forEach((line, index) => {
+            doc.text(line, 14, finalY + 5 + (index * 5));
+        });
+        
+        finalY += 10 + (bankLines.length * 5);
+    }
+    
+    // Add footer
+    doc.setFontSize(10);
+    doc.text('Thank you for your business!', 105, finalY + 10, { align: 'center' });
+    doc.text(storeName, 105, finalY + 15, { align: 'center' });
+    
+    // Save the PDF
+    doc.save(`${currentDocument.type}-${currentDocument.number}.pdf`);
+}
 
         // Export quotation as PDF directly from form
         function exportQuotationAsPdf() {
@@ -7128,47 +7367,48 @@
             });
         }
 
-        // Load store settings
-        function loadStoreSettings() {
-            database.ref('settings').once('value').then(snapshot => {
-                const settings = snapshot.val();
-                
-                if (settings) {
-                    if (settings.storeName) document.getElementById('storeName').value = settings.storeName;
-                    if (settings.storeAddress) document.getElementById('storeAddress').value = settings.storeAddress;
-                    if (settings.storePhone) document.getElementById('storePhone').value = settings.storePhone;
-                    if (settings.storeEmail) document.getElementById('storeEmail').value = settings.storeEmail;
-                    if (settings.tableCount) {
-                        document.getElementById('tableCount').value = settings.tableCount;
-                        tablesCount = settings.tableCount;
-                    }
-                }
-            });
+       function loadStoreSettings() {
+    database.ref('settings').once('value').then(snapshot => {
+        const settings = snapshot.val();
+        
+        if (settings) {
+            if (settings.storeName) document.getElementById('storeName').value = settings.storeName;
+            if (settings.storeAddress) document.getElementById('storeAddress').value = settings.storeAddress;
+            if (settings.storePhone) document.getElementById('storePhone').value = settings.storePhone;
+            if (settings.storeEmail) document.getElementById('storeEmail').value = settings.storeEmail;
+            if (settings.storeLogo) document.getElementById('storeLogo').value = settings.storeLogo;
+            if (settings.bankDetails) document.getElementById('bankDetails').value = settings.bankDetails;
+            if (settings.tableCount) {
+                document.getElementById('tableCount').value = settings.tableCount;
+                tablesCount = settings.tableCount;
+            }
         }
+    });
+}
 
-        // Save store settings
         function saveStoreSettings(e) {
-            e.preventDefault();
-            
-            const settings = {
-                storeName: document.getElementById('storeName').value,
-                storeAddress: document.getElementById('storeAddress').value,
-                storePhone: document.getElementById('storePhone').value,
-                storeEmail: document.getElementById('storeEmail').value,
-                tableCount: parseInt(document.getElementById('tableCount').value)
-            };
-            
-            database.ref('settings').set(settings)
-                .then(() => {
-                    showNotification('Settings saved successfully!');
-                    tablesCount = settings.tableCount;
-                    loadTables();
-                })
-                .catch(error => {
-                    showNotification('Error saving settings: ' + error.message, 'error');
-                });
-        }
-
+    e.preventDefault();
+    
+    const settings = {
+        storeName: document.getElementById('storeName').value,
+        storeAddress: document.getElementById('storeAddress').value,
+        storePhone: document.getElementById('storePhone').value,
+        storeEmail: document.getElementById('storeEmail').value,
+        storeLogo: document.getElementById('storeLogo').value,
+        bankDetails: document.getElementById('bankDetails').value,
+        tableCount: parseInt(document.getElementById('tableCount').value)
+    };
+    
+    database.ref('settings').set(settings)
+        .then(() => {
+            showNotification('Settings saved successfully!');
+            tablesCount = settings.tableCount;
+            loadTables();
+        })
+        .catch(error => {
+            showNotification('Error saving settings: ' + error.message, 'error');
+        });
+}
         // Export to Excel
         function exportToExcel(type) {
             let data = [];
@@ -7969,6 +8209,481 @@
             
             // Add enhanced cart initialization
             initEnhancedCart();
+            
+            // Rest of your existing initialization code...
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initAdmin);
+    </script>
+     <script>
+        // Global variables
+        let currentLogoData = null;
+        let currentLogoType = null;
+
+        // DOM elements for logo upload
+        const logoUpload = document.getElementById('logoUpload');
+        const uploadLogoBtn = document.getElementById('uploadLogoBtn');
+        const removeLogoBtn = document.getElementById('removeLogoBtn');
+        const logoPreview = document.getElementById('logoPreview');
+        const noLogoText = document.getElementById('noLogoText');
+
+        // Initialize logo upload functionality
+        function initLogoUpload() {
+            // Upload logo button click
+            uploadLogoBtn.addEventListener('click', () => {
+                logoUpload.click();
+            });
+            
+            // Logo file selection
+            logoUpload.addEventListener('change', handleLogoUpload);
+            
+            // Remove logo button
+            removeLogoBtn.addEventListener('click', removeLogo);
+        }
+
+        // Handle logo upload
+        function handleLogoUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            // Check file type
+            if (!file.type.match('image.*')) {
+                showNotification('Please select an image file (PNG, JPG, JPEG)', 'error');
+                return;
+            }
+            
+            // Check file size (max 500KB)
+            if (file.size > 500 * 1024) {
+                showNotification('Image size should be less than 500KB', 'error');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                // Store logo data
+                currentLogoData = event.target.result;
+                currentLogoType = file.type;
+                
+                // Display preview
+                logoPreview.src = currentLogoData;
+                logoPreview.style.display = 'block';
+                noLogoText.style.display = 'none';
+                removeLogoBtn.style.display = 'inline-block';
+                
+                showNotification('Logo uploaded successfully');
+            };
+            
+            reader.readAsDataURL(file);
+        }
+
+        // Remove logo
+        function removeLogo() {
+            currentLogoData = null;
+            currentLogoType = null;
+            logoPreview.style.display = 'none';
+            noLogoText.style.display = 'block';
+            removeLogoBtn.style.display = 'none';
+            logoUpload.value = '';
+            
+            showNotification('Logo removed');
+        }
+
+        // Load store settings with logo
+        function loadStoreSettings() {
+            database.ref('settings').once('value').then(snapshot => {
+                const settings = snapshot.val();
+                
+                if (settings) {
+                    if (settings.storeName) document.getElementById('storeName').value = settings.storeName;
+                    if (settings.storeAddress) document.getElementById('storeAddress').value = settings.storeAddress;
+                    if (settings.storePhone) document.getElementById('storePhone').value = settings.storePhone;
+                    if (settings.storeEmail) document.getElementById('storeEmail').value = settings.storeEmail;
+                    if (settings.bankDetails) document.getElementById('bankDetails').value = settings.bankDetails;
+                    if (settings.tableCount) {
+                        document.getElementById('tableCount').value = settings.tableCount;
+                        tablesCount = settings.tableCount;
+                    }
+                    
+                    // Load logo if exists
+                    if (settings.logoData) {
+                        currentLogoData = settings.logoData;
+                        currentLogoType = settings.logoType;
+                        
+                        logoPreview.src = currentLogoData;
+                        logoPreview.style.display = 'block';
+                        noLogoText.style.display = 'none';
+                        removeLogoBtn.style.display = 'inline-block';
+                    }
+                }
+            });
+        }
+
+        // Save store settings with logo
+        function saveStoreSettings(e) {
+            e.preventDefault();
+            
+            const settings = {
+                storeName: document.getElementById('storeName').value,
+                storeAddress: document.getElementById('storeAddress').value,
+                storePhone: document.getElementById('storePhone').value,
+                storeEmail: document.getElementById('storeEmail').value,
+                bankDetails: document.getElementById('bankDetails').value,
+                tableCount: parseInt(document.getElementById('tableCount').value)
+            };
+            
+            // Add logo data if exists
+            if (currentLogoData) {
+                settings.logoData = currentLogoData;
+                settings.logoType = currentLogoType;
+            }
+            
+            database.ref('settings').set(settings)
+                .then(() => {
+                    showNotification('Settings saved successfully!');
+                    tablesCount = settings.tableCount;
+                    loadTables();
+                })
+                .catch(error => {
+                    showNotification('Error saving settings: ' + error.message, 'error');
+                });
+        }
+
+        // Generate document HTML with centered logo and store name
+        function generateDocumentHTML(type, document) {
+            const storeName = document.getElementById('storeName').value || 'symcodermv-cafe';
+            const storeAddress = document.getElementById('storeAddress').value || '';
+            const storePhone = document.getElementById('storePhone').value || '';
+            const storeEmail = document.getElementById('storeEmail').value || '';
+            
+            // Create header with logo and store name
+            const headerHTML = `
+                <div class="invoice-header-center">
+                    <div class="invoice-logo-container">
+                        ${currentLogoData ? `<img src="${currentLogoData}" class="invoice-logo-img" alt="${storeName}">` : ''}
+                        <div class="invoice-store-name">${storeName}</div>
+                        <div class="invoice-store-details">
+                            ${storeAddress ? `<p>${storeAddress}</p>` : ''}
+                            <p>Tel: ${storePhone} ${storeEmail ? `| Email: ${storeEmail}` : ''}</p>
+                        </div>
+                    </div>
+                    <div class="document-title">
+                        ${type === 'quotation' ? 'QUOTATION' : 'INVOICE'}
+                    </div>
+                </div>
+            `;
+            
+            return `
+                ${headerHTML}
+                
+                <div class="invoice-details">
+                    <div class="invoice-to">
+                        <h3>${type === 'quotation' ? 'Quotation To:' : 'Bill To:'}</h3>
+                        <p>${document.customer.name}</p>
+                        <p>${document.customer.contact}</p>
+                        <p>${document.customer.address || ''}</p>
+                    </div>
+                    
+                    <div class="invoice-from">
+                        <p><strong>${type === 'quotation' ? 'Quotation' : 'Invoice'} #:</strong> ${document.number}</p>
+                        <p><strong>Date:</strong> ${document.date}</p>
+                        ${type === 'quotation' ? `<p><strong>Valid Until:</strong> ${document.validUntil}</p>` : `<p><strong>Due Date:</strong> ${document.dueDate}</p>`}
+                    </div>
+                </div>
+                
+                <table class="invoice-items">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${document.items.map(item => `
+                            <tr>
+                                <td>${item.product}</td>
+                                <td>${item.quantity}</td>
+                                <td>MVR ${item.price.toFixed(2)}</td>
+                                <td>MVR ${item.total.toFixed(2)}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                    <tfoot>
+                        <tr class="invoice-total-row grand-total">
+                            <td colspan="3">Total</td>
+                            <td>MVR ${document.total.toFixed(2)}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                
+                ${document.notes ? `<div class="document-notes"><p><strong>Notes:</strong> ${document.notes}</p></div>` : ''}
+                
+                <div class="invoice-footer">
+                    <p>Thank you for your business!</p>
+                    <p>${storeName}</p>
+                </div>
+            `;
+        }
+
+        // Generate invoice HTML for orders
+        function generateInvoiceHTML(order) {
+            const storeName = document.getElementById('storeName').value || 'symcodermv-cafe';
+            const storeAddress = document.getElementById('storeAddress').value || '';
+            const storePhone = document.getElementById('storePhone').value || '';
+            const storeEmail = document.getElementById('storeEmail').value || '';
+            
+            // Create header with logo and store name
+            const headerHTML = `
+                <div class="invoice-header-center">
+                    <div class="invoice-logo-container">
+                        ${currentLogoData ? `<img src="${currentLogoData}" class="invoice-logo-img" alt="${storeName}">` : ''}
+                        <div class="invoice-store-name">${storeName}</div>
+                        <div class="invoice-store-details">
+                            ${storeAddress ? `<p>${storeAddress}</p>` : ''}
+                            <p>Tel: ${storePhone} ${storeEmail ? `| Email: ${storeEmail}` : ''}</p>
+                        </div>
+                    </div>
+                    <div class="document-title">
+                        INVOICE
+                    </div>
+                </div>
+            `;
+            
+            return `
+                ${headerHTML}
+                
+                <div class="invoice-details">
+                    <div class="invoice-to">
+                        <h3>Bill To:</h3>
+                        <p>${order.customer?.name || 'Cash Customer'}</p>
+                        <p>${order.customer?.contact || ''}</p>
+                        <p>${order.customer?.address || ''}</p>
+                    </div>
+                    
+                    <div class="invoice-from">
+                        <p><strong>Invoice #:</strong> ${order.orderNumber}</p>
+                        <p><strong>Date:</strong> ${order.date || new Date().toISOString().split('T')[0]}</p>
+                        <p><strong>Order Type:</strong> ${order.orderType === 'dining' ? 'Dining' : 'Takeaway'}</p>
+                        ${order.table ? `<p><strong>Table:</strong> ${order.table}</p>` : ''}
+                    </div>
+                </div>
+                
+                <table class="invoice-items">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${order.items.map(item => `
+                            <tr>
+                                <td>${item.name}</td>
+                                <td>${item.quantity}</td>
+                                <td>MVR ${item.price.toFixed(2)}</td>
+                                <td>MVR ${(item.price * item.quantity).toFixed(2)}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                    <tfoot>
+                        <tr class="invoice-total-row grand-total">
+                            <td colspan="3">Total</td>
+                            <td>MVR ${order.total.toFixed(2)}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                
+                <div class="payment-details">
+                    <p><strong>Payment Method:</strong> ${order.paymentMethod === 'cash' ? 'Cash' : order.paymentMethod === 'credit' ? 'Credit' : 'Bank Transfer'}</p>
+                    <p><strong>Status:</strong> ${order.status || 'completed'}</p>
+                </div>
+                
+                <div class="invoice-footer">
+                    <p>Thank you for your business!</p>
+                    <p>${storeName}</p>
+                </div>
+            `;
+        }
+
+        // Download document as PDF with centered logo and store name
+        function downloadDocumentAsPdf() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Get settings
+            const storeName = document.getElementById('storeName').value || 'symcodermv-cafe';
+            const storeAddress = document.getElementById('storeAddress').value || '';
+            const storePhone = document.getElementById('storePhone').value || '';
+            const storeEmail = document.getElementById('storeEmail').value || '';
+            const bankDetails = document.getElementById('bankDetails').value || '';
+            
+            let yPosition = 15;
+            
+            // Add logo if available
+            if (currentLogoData) {
+                try {
+                    // Convert data URL to image
+                    const img = new Image();
+                    img.src = currentLogoData;
+                    
+                    // Wait for image to load
+                    img.onload = function() {
+                        // Calculate dimensions to maintain aspect ratio
+                        const maxWidth = 40;
+                        const ratio = maxWidth / img.width;
+                        const height = img.height * ratio;
+                        
+                        // Center the logo
+                        const pageWidth = doc.internal.pageSize.getWidth();
+                        const logoX = (pageWidth - maxWidth) / 2;
+                        
+                        doc.addImage(currentLogoData, 'PNG', logoX, yPosition, maxWidth, height);
+                        yPosition += height + 5;
+                        
+                        continuePDFGeneration(doc, yPosition, storeName, storeAddress, storePhone, storeEmail, bankDetails);
+                    };
+                    
+                    img.onerror = function() {
+                        // Fallback to text store name
+                        doc.setFontSize(16);
+                        doc.text(storeName, 105, yPosition, { align: 'center' });
+                        yPosition += 10;
+                        
+                        continuePDFGeneration(doc, yPosition, storeName, storeAddress, storePhone, storeEmail, bankDetails);
+                    };
+                } catch (error) {
+                    console.error('Error loading logo:', error);
+                    // Fallback to text store name
+                    doc.setFontSize(16);
+                    doc.text(storeName, 105, yPosition, { align: 'center' });
+                    yPosition += 10;
+                    
+                    continuePDFGeneration(doc, yPosition, storeName, storeAddress, storePhone, storeEmail, bankDetails);
+                }
+            } else {
+                // Text store name (centered)
+                doc.setFontSize(16);
+                doc.text(storeName, 105, yPosition, { align: 'center' });
+                yPosition += 10;
+                
+                continuePDFGeneration(doc, yPosition, storeName, storeAddress, storePhone, storeEmail, bankDetails);
+            }
+        }
+
+        // Continue PDF generation after logo processing
+        function continuePDFGeneration(doc, yPosition, storeName, storeAddress, storePhone, storeEmail, bankDetails) {
+            // Add company details (centered)
+            doc.setFontSize(10);
+            if (storeAddress) {
+                doc.text(storeAddress, 105, yPosition, { align: 'center' });
+                yPosition += 5;
+            }
+            
+            let contactInfo = `Tel: ${storePhone}`;
+            if (storeEmail) {
+                contactInfo += ` | Email: ${storeEmail}`;
+            }
+            doc.text(contactInfo, 105, yPosition, { align: 'center' });
+            yPosition += 10;
+            
+            // Add document title (centered)
+            doc.setFontSize(16);
+            doc.text(currentDocument.type === 'quotation' ? 'QUOTATION' : 'INVOICE', 105, yPosition, { align: 'center' });
+            yPosition += 15;
+            
+            // Add document details
+            doc.setFontSize(10);
+            doc.text(`Date: ${currentDocument.date}`, 14, yPosition);
+            if (currentDocument.type === 'quotation') {
+                doc.text(`Valid Until: ${currentDocument.validUntil}`, 14, yPosition + 5);
+                yPosition += 10;
+            } else {
+                doc.text(`Due Date: ${currentDocument.dueDate}`, 14, yPosition + 5);
+                yPosition += 10;
+            }
+            doc.text(`${currentDocument.type === 'quotation' ? 'Quotation' : 'Invoice'} #: ${currentDocument.number}`, 14, yPosition);
+            
+            // Add customer details
+            yPosition += 15;
+            doc.setFontSize(12);
+            doc.text(currentDocument.type === 'quotation' ? 'Quotation To:' : 'Bill To:', 14, yPosition);
+            doc.setFontSize(10);
+            doc.text(currentDocument.customer.name, 14, yPosition + 5);
+            doc.text(currentDocument.customer.contact, 14, yPosition + 10);
+            doc.text(currentDocument.customer.address || '', 14, yPosition + 15);
+            
+            // Add items table
+            const tableColumn = ["Description", "Qty", "Price", "Total"];
+            const tableRows = [];
+            
+            currentDocument.items.forEach(item => {
+                const itemData = [
+                    item.product,
+                    item.quantity.toString(),
+                    `MVR ${item.price.toFixed(2)}`,
+                    `MVR ${item.total.toFixed(2)}`
+                ];
+                tableRows.push(itemData);
+            });
+            
+            // Add total row
+            tableRows.push([
+                "",
+                "",
+                "Total:",
+                `MVR ${currentDocument.total.toFixed(2)}`
+            ]);
+            
+            doc.autoTable({
+                startY: yPosition + 20,
+                head: [tableColumn],
+                body: tableRows,
+                theme: 'grid',
+                styles: { fontSize: 10 },
+                headStyles: { fillColor: [74, 158, 91] }
+            });
+            
+            // Add notes if available
+            let finalY = doc.lastAutoTable.finalY + 10;
+            if (currentDocument.notes) {
+                doc.text(`Notes: ${currentDocument.notes}`, 14, finalY);
+                finalY += 10;
+            }
+            
+            // Add bank details if available
+            if (bankDetails) {
+                doc.setFontSize(10);
+                doc.setFont(undefined, 'bold');
+                doc.text('Bank Details:', 14, finalY);
+                doc.setFont(undefined, 'normal');
+                
+                const bankLines = bankDetails.split('\n');
+                bankLines.forEach((line, index) => {
+                    doc.text(line, 14, finalY + 5 + (index * 5));
+                });
+                
+                finalY += 10 + (bankLines.length * 5);
+            }
+            
+            // Add footer (centered)
+            doc.setFontSize(10);
+            doc.text('Thank you for your business!', 105, finalY + 10, { align: 'center' });
+            doc.text(storeName, 105, finalY + 15, { align: 'center' });
+            
+            // Save the PDF
+            doc.save(`${currentDocument.type}-${currentDocument.number}.pdf`);
+        }
+
+        // Initialize the admin panel with logo upload
+        function initAdmin() {
+            // Previous initialization code remains the same...
+            
+            // Add logo upload initialization
+            initLogoUpload();
             
             // Rest of your existing initialization code...
         }
